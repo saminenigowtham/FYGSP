@@ -1,0 +1,76 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  color: white;
+  z-index: -1;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 1;
+  top: 120px;
+  bottom: 0;
+  right: -300px; /* Initially off-screen to the right */
+  height: 88vh;
+  /* width: 200px; */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 5px -6px rgba(208,65,65,0.75) inset;
+  -webkit-box-shadow: 10px 10px 5px -6px rgba(208,65,65,0.75) inset;
+  -moz-box-shadow: 10px 10px 5px -6px rgba(208,65,65,0.75) inset;
+}
+
+/* Animation for sliding in when opening */
+.sidebar.open {
+  animation: slideInRight 0.4s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+/* Animation for sliding out when closing */
+.sidebar.closed {
+  animation: slideOutRight 0.3s ease forwards;
+}
+
+@keyframes slideOutRight {
+  from {
+    right: 0;
+  }
+  to {
+    right: -300px;
+  }
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px;
+  cursor: pointer;
+}

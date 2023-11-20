@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+
+.loginbg{
+    background: url("./assets/loginbg.jpg"); 
+      min-height: 75vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+  }
+  
+  @media (max-width: 500px){
+    .loginbg{
+      background: url("./assets/slogin2.jpg"); 
+      min-height: 70vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
