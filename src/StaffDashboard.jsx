@@ -14,7 +14,7 @@ export default function StaffDashboard()
     // const serverPath1 = "http://127.0.0.1:5000"
       const serverPath1 = "https://fgspserver.onrender.com"
     
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState();
 
     const GuideMailId = localStorage.getItem("GuideMailId");
     const [AllStudents, setAllStudents] = useState();
@@ -71,11 +71,12 @@ export default function StaffDashboard()
 
 
         <>
-        {isLoading && <LoadingScreen />}
+        {/* {true && <LoadingScreen />} */}
+
         
         <div className='flex flex-col min-h-screen'>
         
-        <div className="">
+        {/* <div className=""> */}
 
 
             <nav className="flex items-center justify-between bg-[#9e1c3f] p-10 py-5">
@@ -100,6 +101,7 @@ export default function StaffDashboard()
                     </button>
                     </div>
             </nav>
+
 
 
                 {GuideDetails && ( // Check if GuideDetails is not null or undefined
@@ -130,7 +132,11 @@ export default function StaffDashboard()
                     </div>
                 </div>
                 )}
-        </div>
+        {/* </div> */}
+
+
+
+        
 
         <div className={`flex-grow  pt-24 pb-10 px-10  bg-red-50 md:blur-0 ${isSidebarOpen ? "blur-sm":""}`}>
 
