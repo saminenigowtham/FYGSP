@@ -23,7 +23,7 @@ export default function About(){
 
 
             <div className="loginbg md:px-0">
-    <div className=' border p-6 bg-white bg-opacity-80 backdrop-filter rounded-lg shadow-lg font-semibold'>
+    <div className=' border p-6 bg-white md:bg-opacity-80 bg-opacity-50 backdrop-filter rounded-lg shadow-lg font-semibold'>
             
 
         <p className="font-bold flex items-center justify-center text-xl">Welcome to the Guide Selection Portal for First-Year Students!</p><br></br>            
