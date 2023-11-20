@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { useEffect } from 'react';
 // import { useLocation } from 'react-router-dom';
+import LoadingScreen from './shared/Loader';
 
 import Loginnavbar from "./shared/Loginnavbar";
 import Footer from "./shared/Footer";
@@ -18,6 +19,7 @@ export default function StaffLogin(){
     // const serverPath1 = "http://127.0.0.1:5000"
       const serverPath1 = "https://fgspserver.onrender.com"
     
+    const [isLoading, setIsLoading] = useState();
     
     const navigate = useNavigate()
     const currentPath = location.pathname;
@@ -28,6 +30,7 @@ export default function StaffLogin(){
         setError1();
         e.preventDefault();
         console.warn("Im clicked");
+        setIsLoading(true);
         
         const response = await axios.post(serverPath1+"/login/"+formData['email'], formData)
         console.warn(response.data);
@@ -40,6 +43,7 @@ export default function StaffLogin(){
             localStorage.setItem("GuideMailId",formData.email);
             navigate("/staffdashboard")
         }
+        setIsLoading(false);
     }
 
     useEffect(()=>{
@@ -53,6 +57,8 @@ export default function StaffLogin(){
 
     return(
         <>
+
+            {isLoading && <LoadingScreen />}
             <div className="flex flex-col min-h-screen">
                 <div className="flex-grow">
 
@@ -89,7 +95,7 @@ export default function StaffLogin(){
 
                         <div className=' flex justify-center'>
 
-                            <button className= 'bg-red-900 text-white px-6 py-2 rounded-md my-2 text-lg' type="submit">Submit</button>
+                            <button className= 'bg-red-900 text-white px-6 py-2 rounded-md my-2 text-lg' type="submit">Login</button>
                         </div>
 
                         <div className="flex justify-around pb-2">
