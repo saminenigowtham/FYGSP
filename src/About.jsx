@@ -22,7 +22,7 @@ export default function About(){
 
 
 
-            <div className="loginbg md:px-0 px-10">
+            <div className="loginbg md:px-0">
     <div className=' border p-6 bg-white bg-opacity-80 backdrop-filter rounded-lg shadow-lg font-semibold'>
             
 
