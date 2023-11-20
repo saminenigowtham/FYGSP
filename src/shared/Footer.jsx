@@ -15,17 +15,24 @@ const Footer = () => {
           <div>
             <p className="text-lg font-semibold pb-3.5">Visit us at:</p>
           </div>
+       <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank" rel="noopener noreferrer">
        <div className='flex py-1'>
        <img src={Email} alt="" /> &nbsp;
         <p> Mail</p>
        </div>
+       </a>
+       <a href="https://www.linkedin.com/in/pradeep-pradeep-1bbb3521a/" target="_blank" rel="noopener noreferrer">
+       <div className='flex py-1 cursor-pointer' >
+              <img src={Linkedin} alt="" /> &nbsp;
+              <p>Linkedin</p>
+       </div>
+            </a>
+       <a href="https://www.instagram.com/venkatapradeep.g/" target="_blank" rel="noopener noreferrer">
        <div className='flex py-1'>
-       <img src={Linkedin} alt="" /> &nbsp;
-        <p> Linkedin</p>
-       </div><div className='flex py-1'>
        <img src={Insta} alt="" /> &nbsp;
         <p> Instagram</p>
        </div>
+       </a>
        </div>
       </div>
       <hr className="mx-20" />
