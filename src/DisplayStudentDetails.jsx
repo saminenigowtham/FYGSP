@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 
 export default function DisplayStudentDetails(props){
@@ -20,16 +21,50 @@ export default function DisplayStudentDetails(props){
       }
 
 
+        // const serverPath1 = "http://127.0.0.1:5000"
+  const serverPath1 = "https://fgspserver.onrender.com"
+
+
+
 
       const [OpenCommentBox , setOpenCommentBox] = useState(false);
       const [comment, setComment] = useState("");
-
+      const [Error1, setError1] = useState("");
+      const [isSending, setisSending] = useState(false);
+      const [successMessage, setSuccessMessage] = useState("");
 
 
       const sendComment = async(e)=>{
         e.preventDefault();
 
-        const response = axait axios.post()
+        try{
+
+           const data = {
+            "message" : comment
+           }
+
+        setisSending(true);
+
+        const response = await axios.post(serverPath1+"/sendMessage/"+props.mailId, data)
+        console.warn(response.data);
+        if(response.data.message == "SENT")
+        {
+          setSuccessMessage("Message sent successfully!");
+          setOpenCommentBox(false);
+          setisSending(false);
+          setComment("");
+
+          setTimeout(() => {
+            setSuccessMessage("");
+          }, 2000);
+        }
+        else{
+          setError1("Not sent try again.")
+        }
+      }
+      catch(error){
+        setError1("Not sent try agin.")
+      }
       }
 
 
@@ -39,10 +74,10 @@ export default function DisplayStudentDetails(props){
     return(
         <>
 
-        <div className="flex flex-col items-center gap-5 p-10 lg:w-96 w-80 bg-white border  rounded-xl">
+        <div className="flex flex-col items-center  p-8 lg:w-96 w-80 bg-white border  rounded-xl">
 
 
-            <div className="w-40 h-40  overflow-hidden rounded-full">
+            <div className="w-44 h-44  overflow-hidden rounded-full border-red-700 border-4">
                          <img 
                         // src={props.img}
                         src={getDirectLinkFromShareableLink(props.img)}
@@ -50,57 +85,81 @@ export default function DisplayStudentDetails(props){
                         className="" />
             </div>
 
-        <div className="font-bold text-4xl flex flex-col break-words break-all md:pt-10">
+        <div className=" flex flex-col items-center">
+        <div className="font-bold text-3xl flex flex-col break-words break-all md:pt-10">
           <p>{props.name}</p>
         </div>
 
-        <div className="font-semibold text-xl">
-          <p>{props.regNo}</p>
+        <div className="font-semibold text-lg pt-2">
+          <p>Register No : {props.regNo}</p>
         </div>
 
-        <div className="font-medium text-lg flex flex-col break-words break-all">
+        <div className="font-medium text-lg">
+          <p>Section : {props.section}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        </div>
+
+        <div className="font-medium pt-6  flex flex-col break-words break-all">
           <p>{props.mailId}</p>
         </div>
 
         <div className="font-medium text-lg">
-          <p>{props.phoneNo}</p>
+          <p>Phone No : {props.phoneNo}</p>
         </div>
 
-        <div className="font-medium text-lg">
-          <p>Section : {props.section}</p>
-        </div>
+        
 
-        <div className="font-medium text-lg">
+        <div className="font-medium text-lg pb-6">
           <p>{props.address}</p>
         </div>
 
         {!OpenCommentBox && 
+        
         <button 
-        className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+
+
+        className={`bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg ${isSending ? 'cursor-none':'cursor-pointer'} `}
         onClick={()=>{
           setOpenCommentBox(true);
         }}
         >
-        Send Comment
+        { isSending ? "Sending..." : "Send Comment"}
         </button>}
 
         {OpenCommentBox && 
         <div>
-        <input
-            className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
+        <textarea
+            className="border-2 h-16 px-4 w-full bg-gray-200 mb-4"
             type="text"
+            rows={2}
             placeholder="Message"
             value={comment}
             required
             onChange={(e) => setComment(e.target.value)}
           />
+          <div className="flex justify-around">
           <button 
           onClick={sendComment}
           className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
           >Send</button>
+
+          <button 
+          onClick={()=>{
+            setOpenCommentBox(false);
+            setisSending(false);
+            setComment("")
+          }}
+          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+          >Cancel</button>
+          </div>
           </div>
           }
 
+          {successMessage && <p className="text-green-600">{successMessage}</p>}
+
+          {Error1 && <p className="text-red-600">{Error1}</p>}
+
+
+          </div>
         </div>
         </>
     )

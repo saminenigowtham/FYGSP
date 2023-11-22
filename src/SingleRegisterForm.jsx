@@ -66,7 +66,7 @@ export default function SingleRegisterForm() {
 
   const [recievedOTP, setrecievedOTP] = useState("")
   const [userotpcontainer,setuserotpcontainer] = useState(false)
-  const [userotp,setuserotp] = useState()
+  const [userotp,setuserotp] = useState(0)
 
   const [isVerifying, setIsVerifying] = useState(false);
   const [verifystatus, setverifystatus] = useState(false);
@@ -112,7 +112,7 @@ export default function SingleRegisterForm() {
         setIsLoading(false)
         console.warn(err)
         setIsVerifying(false)
-        // setVerificationInitiated(false);
+        setVerificationInitiated(false);
     } finally {
         setIsVerifying(false)
         // setVerificationInitiated(false);
@@ -589,7 +589,7 @@ export default function SingleRegisterForm() {
           required
           onChange={(e) => {
             setuserotp(e.target.value);
-            if (recievedOTP.toString() == e.target.value.toString())
+            if (recievedOTP == e.target.value)
             {
         setIsVerifying(true)
         setverifystatus(true)
