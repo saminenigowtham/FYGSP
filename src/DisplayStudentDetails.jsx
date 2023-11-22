@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { format } from 'date-fns';
+
 
 
 export default function DisplayStudentDetails(props){
@@ -37,10 +39,15 @@ export default function DisplayStudentDetails(props){
       const sendComment = async(e)=>{
         e.preventDefault();
 
+        const currentDate = new Date();
+        const formattedDate = format(currentDate, 'yyyy-MM-dd HH:mm:ss');
+        console.warn(formattedDate);
+
         try{
 
            const data = {
-            "message" : comment
+            "message" : comment,
+            "date" : formattedDate
            }
 
         setisSending(true);

@@ -7,6 +7,7 @@ import sistlogologin from './assets/sistlogologin.png';
 import LoadingScreen from "./shared/Loader";
 import DisplayStudentDetails from "./DisplayStudentDetails";
 import Footer from "./shared/Footer";
+import { format } from "date-fns";
 
 export default function StaffDashboard()
 {
@@ -79,11 +80,17 @@ export default function StaffDashboard()
     const sendComment = async(e)=>{
       e.preventDefault();
 
+      const currentDate = new Date();
+        const formattedDate = format(currentDate, 'yyyy-MM-dd HH:mm:ss');
+        console.warn(formattedDate);
+
+
       try{
 
          const data = {
           "message" : comment,
-            "mailIds" : AllStudents
+            "mailIds" : AllStudents,
+            "date" : formattedDate
          }
 
       setisSending(true);
