@@ -16,8 +16,8 @@ import LoadingScreen from "./shared/Loader";
 export default function SelectGuide() {
 
 
-  const serverPath1 = "http://127.0.0.1:5000"
-  // const serverPath1 = "https://fgspserver.onrender.com"
+  // const serverPath1 = "http://127.0.0.1:5000"
+  const serverPath1 = "https://fgspserver.onrender.com"
 
 
   const [searchQuery, setSearchQuery] = useState("");

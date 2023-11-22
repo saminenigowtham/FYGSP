@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 
 export default function DisplayStudentDetails(props){
@@ -17,6 +18,16 @@ export default function DisplayStudentDetails(props){
           return null;
         }
       }
+
+
+
+      const [OpenCommentBox , setOpenCommentBox] = useState(false);
+      const [comment, setComment] = useState("");
+
+
+
+      
+
 
 
     return(
@@ -57,10 +68,31 @@ export default function DisplayStudentDetails(props){
           <p>{props.address}</p>
         </div>
 
+        {!OpenCommentBox && 
         <button 
-        className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg">
+        className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+        onClick={()=>{
+          setOpenCommentBox(true);
+        }}
+        >
         Send Comment
-        </button>
+        </button>}
+
+        {OpenCommentBox && 
+        <div>
+        <input
+            className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
+            type="text"
+            placeholder="Message"
+            value={comment}
+            required
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button 
+          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+          >Send</button>
+          </div>
+          }
 
         </div>
         </>
