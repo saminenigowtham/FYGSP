@@ -49,6 +49,19 @@ export default function DisplayStudentDetails(props){
           <p>{props.phoneNo}</p>
         </div>
 
+        <div className="font-medium text-lg">
+          <p>Section : {props.section}</p>
+        </div>
+
+        <div className="font-medium text-lg">
+          <p>{props.address}</p>
+        </div>
+
+        <button 
+        className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg">
+        Send Comment
+        </button>
+
         </div>
         </>
     )

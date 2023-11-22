@@ -4,7 +4,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Loginnavbar from "./shared/Loginnavbar";
 import Footer from "./shared/Footer";
@@ -33,16 +33,20 @@ export default function SingleRegisterForm() {
 
   const [userName, setuserName] = useState("");
   const [userRegNo, setuserRegNo] = useState("");
-  const [userEmail, setuserEmail] = useState(
-    localStorage.getItem("userMailId")
-  );
+  const [userEmail, setuserEmail] = useState("");
   const [userPhone, setuserPhone] = useState("");
+  const [userSection ,setuserSection] = useState("");
+  const [userAddress, setuserAddress] = useState("");
 
   const [guideName, setguideName] = useState(localStorage.getItem("GuideName"));
   const [guideMailId, setguideMailId] = useState(
     localStorage.getItem("GuideMailId")
   );
 
+
+  const handleRadioChange = (e) => {
+    setuserAddress(e.target.value);
+  };
 
   const [getvacancies, setgetvacancies] = useState("")
   const [isnotRegisterd, setisnotRegisterd]  = useState("")
@@ -53,6 +57,78 @@ export default function SingleRegisterForm() {
 
   const [Error1, setError1] = useState('');
 
+
+  const [isMailVerified, setisMailVerified] = useState(false);
+
+  const [isVerificationSuccess, setisVerificationSuccess] = useState(false)
+  const [verificationInitiated, setVerificationInitiated] = useState(false);
+  const [resendTimer, setResendTimer] = useState(30);
+
+  const [recievedOTP, setrecievedOTP] = useState("")
+  const [userotpcontainer,setuserotpcontainer] = useState(false)
+  const [userotp,setuserotp] = useState()
+
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [verifystatus, setverifystatus] = useState(false);
+
+
+  const startResendTimer = () => {
+    setIsVerifying(true);
+    setResendTimer(30); // Set the initial timer value
+    const interval = setInterval(() => {
+      setResendTimer(prevTimer => prevTimer - 1);
+    }, 1000); // Decrease the timer every second
+  
+    // Stop the timer after 30 seconds
+    setTimeout(() => {
+      clearInterval(interval);
+      setIsVerifying(false); // Enable the verify button
+    }, 30000);
+  };
+
+  const checkMailId = async(e) => {
+    e.preventDefault();
+    // console.warn("Im clicked")
+    setIsLoading(true)
+    if (userEmail){
+    try{
+        setIsVerifying(true);
+        setVerificationInitiated(true);
+
+        const response = await axios.get(serverPath1+"/checkMail/"+userEmail);
+        console.warn(response.data)
+        if (response.data.message=="SENT"){
+            startResendTimer();
+            setrecievedOTP(response.data.OTP)
+            setuserotpcontainer(true)
+            // setisMailVerified(true)
+        }
+        else{
+          setError1("Something went wrong! Try again.");
+          setVerificationInitiated(false);
+          setIsVerifying(false);
+        }
+    }catch(err){
+        setIsLoading(false)
+        console.warn(err)
+        setIsVerifying(false)
+        // setVerificationInitiated(false);
+    } finally {
+        setIsVerifying(false)
+        // setVerificationInitiated(false);
+    }
+
+    setIsLoading(false)
+
+
+  }else{
+    // alert("No duplicate entries allowed!")
+    setError1("Enter mail ID first.")
+    setIsLoading(false)
+
+  }
+  
+}
 
 
 //   useEffect(() => {
@@ -79,7 +155,9 @@ export default function SingleRegisterForm() {
   useEffect(() => {
     // Call getData() when the component mounts or when guideMailId changes
     getData();
+    if(userEmail){
     checkRegistered();
+    }
   }, [userEmail,getvacancies,guideMailId]);
   
 
@@ -136,6 +214,8 @@ export default function SingleRegisterForm() {
   const Submit = async (e) => {
     e.preventDefault();
   
+
+
     
 
     const vacancies = parseInt(getvacancies['vacancies']);
@@ -149,6 +229,11 @@ export default function SingleRegisterForm() {
     {
         setError1("Register number must have 8 digits.")
         return
+    }
+
+    if(!isMailVerified){
+      setError1("Please verify the mail id!");
+      return
     }
 
     setIsLoading(true);
@@ -167,7 +252,10 @@ export default function SingleRegisterForm() {
                     phoneNo : userPhone,
                     mailId : userEmail,
                     selectedGuide: guideName,
-                    selectedGuideMailId: guideMailId
+                    selectedGuideMailId: guideMailId,
+                    address : userAddress,
+                    section : userSection
+
                 }
 
                 const responseOfAddNewStudent = axios.put(serverPath1+"/addNewStudent", addNewStudentData);
@@ -208,6 +296,9 @@ export default function SingleRegisterForm() {
                     updatedGuidesStudentsData.append('phoneNo', userPhone); // Replace with the actual value
                     updatedGuidesStudentsData.append('name', userName);
                     updatedGuidesStudentsData.append('GuideMailId', guideMailId);
+                    updatedGuidesStudentsData.append('address', userAddress);
+                    updatedGuidesStudentsData.append('section', userSection);
+
 
                     // Make a POST request to your server endpoint
                 const updatedGuidesStudentsResponse = axios.put(serverPath1+'/updateGuidesStudentsData', updatedGuidesStudentsData, {
@@ -303,7 +394,7 @@ export default function SingleRegisterForm() {
         <div className="border-solid border-2 m-4 p-5">
 
         <div className="flex justify-center lg:space-y-0 space-y-2">
-          <p className="lg:text-2xl text-xl font-bold pb-4">Student Details</p>
+          <p className="lg:text-2xl text-xl font-bold pb-4">Mentee Details</p>
         </div>
 
 
@@ -329,7 +420,7 @@ export default function SingleRegisterForm() {
           <input
             className="border-2 h-12 px-4 w-full bg-gray-200 mb-6"
             type="number"
-            placeholder="reg no"
+            placeholder="Reg No"
             value={userRegNo}
             required
             minLength={8}
@@ -353,13 +444,23 @@ export default function SingleRegisterForm() {
         <div className="lg:w-full lg:mx-12">
           <div>
           <label>Email</label>
-          <input className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
-           type="email"
-           value={userEmail} 
-           required 
-           placeholder="Email ID" 
-           onChange={(e) => {setuserEmail(e.target.value)}}
-           />
+          {verifystatus ? <input
+            className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
+            type="email"
+            placeholder=""
+            value={userEmail}
+            required
+            readOnly
+            onChange={(e) => setuserEmail(e.target.value)}
+          />:
+          <input
+            className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
+            type="email"
+            placeholder=""
+            value={userEmail}
+            required
+            onChange={(e) => setuserEmail(e.target.value)}
+          />}
           </div>
         </div>
 
@@ -369,7 +470,7 @@ export default function SingleRegisterForm() {
           <input
             className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
             type="tel"
-            placeholder="phone"
+            placeholder="Phone"
             value={userPhone}
             minLength={10}
             maxLength={10}
@@ -381,7 +482,69 @@ export default function SingleRegisterForm() {
 
         </div> 
 
-        <div className="lg:pl-8 pt-2">
+
+
+        <div className="lg:flex justify-evenly lg:space-y-0 space-y-2">
+
+<div className="lg:w-full lg:mx-12">
+  <div>
+  <label>Section</label>
+  <input className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
+   type="text"
+   value={userSection} 
+   required 
+   placeholder="Section (Ex: A5)" 
+   onChange={(e) => {setuserSection(e.target.value)}}
+   />
+  </div>
+</div>
+
+<div className="lg:w-full lg:mx-12">
+  {/* <div>
+  <label>Hosteller or Day Scholar</label>
+  <input
+    className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
+    type="radio"
+    placeholder="phone"
+    value={userAddress}
+    minLength={10}
+    maxLength={10}
+    required
+    onChange={(e) => setuserAddress(e.target.value)}
+  />
+    </div> */}
+    <label>Choose : </label>
+    <div className="flex space-x-4 pt-2 text-lg font-semibold">
+      <label>Hosteller</label>
+      <input
+        type="radio"
+        required
+        name="userAddress"
+        value="Hosteller"
+        checked={userAddress === "Hosteller"}
+        onChange={handleRadioChange}
+      />
+
+      <label>Day Scholar</label>
+      <input
+      required
+        type="radio"
+        name="userAddress"
+        value="Day Scholar"
+        checked={userAddress === "Day Scholar"}
+        onChange={handleRadioChange}
+      />
+    </div>
+
+  </div>
+
+</div> 
+
+
+
+
+
+        <div className="lg:pl-8 py-4">
             {!selectedImage && <input
             required
             className="border-0 h-12  px-4 w-fit max-w-min"
@@ -405,6 +568,70 @@ export default function SingleRegisterForm() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+            <div className="flex justify-around">
+        <div className={userotpcontainer ? "visible":"hidden"}> 
+        <input
+          className="border-2 h-12 px-4 w-min bg-gray-200 m-4"
+          type="number"
+          placeholder="Enter OTP"
+          value={userotp}
+          required
+          onChange={(e) => {
+            setuserotp(e.target.value);
+            if (recievedOTP.toString() == e.target.value.toString())
+            {
+        setIsVerifying(true)
+        setverifystatus(true)
+        setuserotpcontainer(false)
+        setisMailVerified(true)
+        setisVerificationSuccess(true)
+            }
+            }}
+        />
+
+
+        {/* <button className="p-4 bg-red-700 text-white text-lg"
+        onClick={checkSecondOtp}
+        disabled={isotpVerifying}>
+        submit</button> */}
+          
+
+        </div>
+        </div>
+        
+
+        <div className="flex justify-around">
+        <div className={isVerificationSuccess ? "hidden":"block"}>
+        <button
+          className="bg-red-900 text-white px-6 py-2 rounded-md my-2 text-lg"
+          onClick={checkMailId}
+          disabled={verificationInitiated && (isVerifying || resendTimer > 0)}
+        >
+          {verificationInitiated
+            ? resendTimer > 0
+              ? `Resend in ${resendTimer}s`
+              : 'Resend'
+            : 'Verify Your Mail'}
+        </button>
+        </div>
+        </div>
+
+        <p className={verifystatus ? "visible text-lg pt-2 lg:pl-12":"hidden"}><b>VERIFIED MAIL ID ✔</b></p>
+
+
+
+
         
         </div>
 
@@ -421,7 +648,7 @@ export default function SingleRegisterForm() {
         <div className="border-solid border-2 m-4 p-5">
 
 <div className="flex justify-center lg:space-y-0 space-y-2">
-  <p className="lg:text-2xl text-xl font-bold pb-4">Guide Details</p>
+  <p className="lg:text-2xl text-xl font-bold pb-4">Mentor Details</p>
 </div>
 
 
@@ -429,14 +656,14 @@ export default function SingleRegisterForm() {
 
 <div className="lg:w-full lg:mx-12">
   <div>
-  <label>Guide Name</label>
+  <label>Mentor Name</label>
           <input className="border-2 h-12 px-4 w-full bg-gray-200 mb-4" type="text" value={guideName} readOnly />
   </div>
 </div>
 
 <div className="lg:w-full lg:mx-12">
   <div>
-  <label>Guide Email Id</label>
+  <label>Mentor Email Id</label>
           <input
             className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
             type="text"

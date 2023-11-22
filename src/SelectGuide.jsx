@@ -16,8 +16,8 @@ import LoadingScreen from "./shared/Loader";
 export default function SelectGuide() {
 
 
-  // const serverPath1 = "http://127.0.0.1:5000"
-  const serverPath1 = "https://fgspserver.onrender.com"
+  const serverPath1 = "http://127.0.0.1:5000"
+  // const serverPath1 = "https://fgspserver.onrender.com"
 
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -86,6 +86,14 @@ export default function SelectGuide() {
 
   let guideSerialNumber = 1;
 
+  function capitalizeEachWord(str) {
+    return str.replace(/\w+/g, (word) => {
+      const firstLetter = word.charAt(0).toUpperCase();
+      const restOfWord = word.slice(1).toLowerCase();
+      return firstLetter + restOfWord;
+    });
+  }
+
 
 
   return (
@@ -142,13 +150,13 @@ export default function SelectGuide() {
           <p>Sr. No.</p>
         </div>
         <div className="lg:w-3/12 sm:w-6/10 flex justify-center p-5 border-x-2 font-semibold">
-          <p>Supervisor's Name</p>
+          <p>Mentor's Details</p>
         </div>
         <div className="lg:w-5/12 md:flex justify-center  p-5 border-x-2 font-semibold hidden sm:block">
-          <p>Specialization</p>
+          <p>Area of Specialization</p>
         </div>
         <div className="lg:w-2/12 flex sm:w-1/10 justify-center p-5 border-x-2 font-semibold">
-          <p>Guideship Vacancy</p>
+          <p>Available Mentor Slots</p>
         </div>
         <div className="lg:w-2/12 sm:w-2/10 flex justify-center p-5 border-x-2 font-semibold">
           <p>Select</p>
@@ -158,7 +166,19 @@ export default function SelectGuide() {
 
 
       {filteredGuides.map((item)=>{
-        return <DisplayGuide key={item['id']} serialNumber={guideSerialNumber++} empid={item['EMPID']} name={item['NAME']} img = {item["IMAGE"]} vacancies={item['VACANCIES']} designation={item['DESIGNATION']} dm1={item["DOMAIN1"]} dm2={item["DOMAIN2"]} dm3={item["DOMAIN3"]} mailid={item["UniversityEMAILID"]} im="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb3m_AEpNzWsxMYF_W3DiheGuLfRH9hTb4SA&usqp=CAU"/>
+        return <DisplayGuide 
+        key={item['id']} 
+        serialNumber={guideSerialNumber++} 
+        empid={item['EMPID']} 
+        name={item['NAME'].toUpperCase()} 
+        img = {item["IMAGE"]} 
+        vacancies={item['VACANCIES']} 
+        designation={capitalizeEachWord(item['DESIGNATION'])} 
+        dm1={item["DOMAIN1"]} 
+        dm2={item["DOMAIN2"]} 
+        dm3={item["DOMAIN3"]} 
+        mailid={item["UniversityEMAILID"]} 
+        im="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb3m_AEpNzWsxMYF_W3DiheGuLfRH9hTb4SA&usqp=CAU"/>
       })}
 
       </div>
