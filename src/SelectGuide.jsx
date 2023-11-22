@@ -40,7 +40,8 @@ export default function SelectGuide() {
     try {
       const response = await axios.get(serverPath1+'/guidelist');
       console.warn(response.data);
-      setGuideDict(response.data);
+      // setGuideDict(response.data);
+      setGuideDict(response.data.sort((a, b) => a.SL - b.SL));
     } catch (err) {
       console.warn(err);
     }
@@ -95,6 +96,28 @@ export default function SelectGuide() {
   }
 
 
+  function capitalizeNameOnly(name) {
+    const words = name.split(' ');
+
+    const capitalizedWords = words.map((word, index) => {
+      const titleMatch = word.match(/^(Mr\.|Mrs\.|Dr\.|Ms\.)(.*)/i);
+  
+      if (titleMatch) {
+        // If there is a title, keep it unchanged
+        const title = titleMatch[1];
+        const capitalizedRest = titleMatch[2] ? titleMatch[2][0].toUpperCase() + titleMatch[2].slice(1).toUpperCase() : '';
+        
+        return title + capitalizedRest;
+      } else {
+        // If no title, capitalize the entire word
+        return word.toUpperCase();
+      }
+    });
+  
+    return capitalizedWords.join(' ');
+  }
+  
+
 
   return (
     <>
@@ -145,14 +168,14 @@ export default function SelectGuide() {
 
       </div>
 
-      <div className="lg:flex md:flex md:flex-row lg:flex-row justify-between border-2 m-0 hidden sm:block">
+      <div className="lg:flex md:flex-row lg:flex-row justify-between border-2 m-0 hidden lg:text-lg text-sm">
         <div className="lg:w-1/12 sm:w-1/10 flex justify-center p-5 border-x-2 font-semibold lg:text-lg sm:text-sm">
           <p>Sr. No.</p>
         </div>
-        <div className="lg:w-3/12 sm:w-6/10 flex justify-center p-5 border-x-2 font-semibold">
+        <div className="lg:w-4/12 sm:w-6/10 flex justify-center p-5 border-x-2 font-semibold">
           <p>Mentor's Details</p>
         </div>
-        <div className="lg:w-5/12 md:flex justify-center  p-5 border-x-2 font-semibold hidden sm:block">
+        <div className="lg:w-4/12 justify-center  p-5 border-x-2 font-semibold hidden md:flex">
           <p>Area of Specialization</p>
         </div>
         <div className="lg:w-2/12 flex sm:w-1/10 justify-center p-5 border-x-2 font-semibold">
@@ -170,14 +193,14 @@ export default function SelectGuide() {
         key={item['id']} 
         serialNumber={guideSerialNumber++} 
         empid={item['EMPID']} 
-        name={item['NAME'].toUpperCase()} 
+        name={capitalizeNameOnly(item['NAME'])} 
         img = {item["IMAGE"]} 
         vacancies={item['VACANCIES']} 
         designation={capitalizeEachWord(item['DESIGNATION'])} 
         dm1={item["DOMAIN1"]} 
         dm2={item["DOMAIN2"]} 
         dm3={item["DOMAIN3"]} 
-        mailid={item["UniversityEMAILID"]} 
+        mailid={item["UniversityEMAILID"].toLowerCase()} 
         im="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb3m_AEpNzWsxMYF_W3DiheGuLfRH9hTb4SA&usqp=CAU"/>
       })}
 
