@@ -26,7 +26,13 @@ export default function DisplayStudentDetails(props){
 
 
 
-      
+      const sendComment = async(e)=>{
+        e.preventDefault();
+
+        const response = axait axios.post()
+      }
+
+
 
 
 
@@ -89,6 +95,7 @@ export default function DisplayStudentDetails(props){
             onChange={(e) => setComment(e.target.value)}
           />
           <button 
+          onClick={sendComment}
           className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
           >Send</button>
           </div>
