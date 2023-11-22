@@ -93,7 +93,7 @@ export default function DisplayStudentDetails(props){
             </div>
 
         <div className=" flex flex-col items-center">
-        <div className="font-bold text-3xl flex flex-col break-words break-all md:pt-10">
+        <div className="font-bold text-2xl flex flex-col break-words break-all md:pt-10">
           <p>{props.name}</p>
         </div>
 
