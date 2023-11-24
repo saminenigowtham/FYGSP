@@ -97,25 +97,26 @@ export default function DisplayStudentDetails(props){
           <p>{props.name}</p>
         </div>
 
-        <div className="font-semibold text-lg pt-2">
+        <div className="font-semibold text-sm pt-2">
+
           <p>Register No : {props.regNo}</p>
         </div>
 
-        <div className="font-medium text-lg">
+        <div className="font-medium text-sm">
           <p>Section : {props.section}&nbsp;&nbsp;&nbsp;&nbsp;</p>
         </div>
 
-        <div className="font-medium pt-6  flex flex-col break-words break-all">
+        <div className="font-medium pt-6 text-xs flex flex-col break-words break-all">
           <p>{props.mailId}</p>
         </div>
 
-        <div className="font-medium text-lg">
+        <div className="font-medium text-sm">
           <p>Phone No : {props.phoneNo}</p>
         </div>
 
         
 
-        <div className="font-medium text-lg pb-6">
+        <div className="font-medium text-sm pb-6">
           <p>{props.address}</p>
         </div>
 
