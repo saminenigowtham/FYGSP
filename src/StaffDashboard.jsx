@@ -17,7 +17,7 @@ export default function StaffDashboard()
     
     const [isLoading, setIsLoading] = useState();
 
-    const GuideMailId = localStorage.getItem("GuideMailId");
+    const GuideMailId = localStorage.getItem("GuideMailIdToLogin");
     const [AllStudents, setAllStudents] = useState();
     const [GuideDetails, setGuideDetails] = useState();
     const [img, setImg] = useState();
@@ -245,7 +245,7 @@ export default function StaffDashboard()
                     <button
                     className="bg-red-900 text-white px-6 py-2 rounded-md my-2 text-sm"
                      onClick={()=>{
-                        localStorage.removeItem("GuideMailId")
+                        localStorage.removeItem("GuideMailIdToLogin")
                         navigate("/")
                     }}>Logout</button>
                     </div>

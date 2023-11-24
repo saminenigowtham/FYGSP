@@ -7,6 +7,8 @@ import About from './About';
 import SingleRegisterForm from './SingleRegisterForm';
 import Success from './Success';
 import StaffDashboard from './StaffDashboard';
+import StudentLogin from './StudentLogin';
+import StudentDashboard from './StudentDashboard';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +24,10 @@ function App() {
           <Route path='/selectguide/:id' element={<SingleRegisterForm />}></Route>
           <Route path='/selectguide/:id/success' element={<Success />}></Route>
           <Route path="/staffdashboard" element={<StaffDashboard />} ></Route>
+
+          <Route path="/studentlogin" element={<StudentLogin />} ></Route>
+          <Route path="/studentdashboard" element={<StudentDashboard />} ></Route>
+
 
         </Routes>
       </Router> 

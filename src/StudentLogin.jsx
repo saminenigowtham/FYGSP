@@ -11,13 +11,13 @@ import LoadingScreen from './shared/Loader';
 import Loginnavbar from "./shared/Loginnavbar";
 import Footer from "./shared/Footer";
 
-export default function StaffLogin(){
+export default function StudentLogin(){
 
 
     const [formData, setFormData] = useState({ email: '', password: '' });
 
-    // const serverPath1 = "http://127.0.0.1:5000"
-      const serverPath1 = "https://fgspserver.onrender.com"
+    const serverPath1 = "http://127.0.0.1:5000"
+    //   const serverPath1 = "https://fgspserver.onrender.com"
     
     const [isLoading, setIsLoading] = useState();
     
@@ -32,7 +32,7 @@ export default function StaffLogin(){
         console.warn("Im clicked");
         setIsLoading(true);
         
-        const response = await axios.post(serverPath1+"/login/"+formData['email'], formData)
+        const response = await axios.post(serverPath1+"/studentlogin/"+formData['email'], formData)
         console.warn(response.data);
         if(response.data.message=="Invalid Credentials" || response.data.message=="Account not found!")
         {
@@ -40,15 +40,15 @@ export default function StaffLogin(){
         }
         else
         {
-            localStorage.setItem("GuideMailIdToLogin",formData.email);
-            navigate("/staffdashboard")
+            localStorage.setItem("StudentMailId",formData.email);
+            navigate("/studentdashboard")
         }
         setIsLoading(false);
     }
 
     useEffect(()=>{
-        if(localStorage.getItem("GuideMailIdToLogin")){
-            navigate("/staffdashboard")
+        if(localStorage.getItem("StudentMailId")){
+            navigate("/studentdashboard")
         }
     },[])
 
@@ -70,7 +70,7 @@ export default function StaffLogin(){
                 <div className='lg:w-1/4 md:w-2/4 s:w-2/4 xs:w-3/4 border p-4 bg-white md:bg-opacity-60 bg-opacity-80 backdrop-filter  rounded-lg shadow-lg'>
                         
                         <div className=' flex justify-center'>
-                            <h1 className='p-4 font-bold text-3xl'>FACULTY LOGIN</h1>
+                            <h1 className='p-4 font-bold text-3xl'>STUDENT LOGIN</h1>
                         </div>
 
                         <div className='justify-center'>
