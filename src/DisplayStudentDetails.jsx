@@ -81,7 +81,7 @@ export default function DisplayStudentDetails(props){
     return(
         <>
 
-        <div className="flex flex-col items-center  p-8 lg:w-96 w-80 bg-white border  rounded-xl">
+        <div className="flex flex-col items-center  py-8 lg:w-80 w-80 bg-white border  rounded-xl">
 
 
             <div className="w-36 h-36  overflow-hidden rounded-full border-red-700 border-4">
@@ -93,7 +93,7 @@ export default function DisplayStudentDetails(props){
             </div>
 
         <div className=" flex flex-col items-center">
-        <div className="font-bold text-2xl flex flex-col break-words break-all md:pt-10">
+        <div className="font-bold text-2xl flex flex-col break-words break-all md:pt-6">
           <p>{props.name}</p>
         </div>
 
@@ -106,7 +106,7 @@ export default function DisplayStudentDetails(props){
           <p>Section : {props.section}&nbsp;&nbsp;&nbsp;&nbsp;</p>
         </div>
 
-        <div className="font-medium pt-6 text-xs flex flex-col break-words break-all">
+        <div className="font-medium pt-4 text-xs flex flex-col break-words break-all">
           <p>{props.mailId}</p>
         </div>
 
@@ -116,7 +116,7 @@ export default function DisplayStudentDetails(props){
 
         
 
-        <div className="font-medium text-sm pb-6">
+        <div className="font-medium text-sm pb-4">
           <p>{props.address}</p>
         </div>
 
