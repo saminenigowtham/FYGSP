@@ -153,7 +153,7 @@ export default function SelectGuide() {
 
       <div className="flex flex-row items-center justify-center">
 
-      <h1 className='p-4 text-white leading-loose  font-semibold lg:text-2xl md:text-2xl items-center text-sm'>Select Your Guide</h1>
+      <h1 className='p-4 text-white leading-loose  font-semibold lg:text-2xl md:text-2xl items-center text-sm'>Select Your Mentor</h1>
       </div>
       <div className="flex flex-row items-center">
 
