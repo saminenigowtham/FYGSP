@@ -28,7 +28,7 @@ export default function About(){
 
         <p className="font-bold flex items-center justify-center text-xl">Welcome to the Mentor Mentee Portal for First-Year Students!</p><br></br>            
         
-        <p className="font-semibold text-lg">This website is designed to help first-year students choose a mentor who will support them throughout the academic year. Here's a step-by-step guide:</p>
+        <p className="font-semibold text-base">This website is designed to help first-year students choose a mentor who will support them throughout the academic year. Here's a step-by-step guide:</p>
 
         <ol className=" pt-2 text-base pl-4 list-decimal">
             <li>Select a faculty member as your mentor. Each mentor has 20 vacancies available.</li>
@@ -53,7 +53,7 @@ export default function About(){
           <div className=' flex justify-center'>
 
 
-            <button onClick={SelectGuide} className="bg-red-900 text-white px-6 py-2 rounded-md my-2 text-lg">Select Mentor</button>
+            <button onClick={SelectGuide} className="bg-red-900 text-white px-6 py-2 rounded-md my-2 text-base">Select Mentor</button>
             </div>
         
             </div>
