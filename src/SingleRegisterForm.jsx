@@ -66,7 +66,7 @@ export default function SingleRegisterForm() {
 
   const [recievedOTP, setrecievedOTP] = useState("")
   const [userotpcontainer,setuserotpcontainer] = useState(false)
-  const [userotp,setuserotp] = useState(0)
+  const [userotp,setuserotp] = useState();
 
   const [isVerifying, setIsVerifying] = useState(false);
   const [verifystatus, setverifystatus] = useState(false);
@@ -153,6 +153,12 @@ export default function SingleRegisterForm() {
 //   }, [guideMailId,navigate]);
 
   useEffect(() => {
+
+    if(localStorage.getItem("GuideMailId")){
+
+    }else{
+      navigate("/selectguide")
+    }
     // Call getData() when the component mounts or when guideMailId changes
     getData();
     if(userEmail){
@@ -235,6 +241,15 @@ export default function SingleRegisterForm() {
       setError1("Please verify the mail id!");
       return
     }
+
+    if(userSection!="A1" || userSection!="A2" || userSection!="A3" || userSection!="A4" || userSection!="A5" || 
+       userSection!="B1" || userSection!="B2" || userSection!="B3" || userSection!="B4" || userSection!="B5" || 
+       userSection!="C1" || userSection!="C2" || userSection!="C3" || userSection!="C4" || userSection!="C5" || 
+       userSection!="D1" || userSection!="D2" || userSection!="D3" || userSection!="D4" || userSection!="D5" || 
+       userSection!="E1" || userSection!="E2" || userSection!="E3" || userSection!="E4" || userSection!="E5"  )
+       {
+          setError1("Enter valid section name!")
+       }
 
     setIsLoading(true);
 
@@ -447,7 +462,7 @@ export default function SingleRegisterForm() {
           {verifystatus ? <input
             className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
             type="email"
-            placeholder=""
+            placeholder="Email Id"
             value={userEmail}
             required
             readOnly
@@ -456,7 +471,7 @@ export default function SingleRegisterForm() {
           <input
             className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
             type="email"
-            placeholder=""
+            placeholder="Email Id"
             value={userEmail}
             required
             onChange={(e) => setuserEmail(e.target.value)}
@@ -470,7 +485,7 @@ export default function SingleRegisterForm() {
           <input
             className="border-2 h-12 px-4 w-full bg-gray-200 mb-4"
             type="tel"
-            placeholder="Phone"
+            placeholder="Phone No"
             value={userPhone}
             minLength={10}
             maxLength={10}

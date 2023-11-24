@@ -70,6 +70,13 @@ export default function SelectGuide() {
 //     };
 
 //     checkToken();
+
+      if(localStorage.getItem('GuideName')){
+
+          localStorage.removeItem('GuideName');
+          localStorage.removeItem("GuideMailId")
+      }
+
     getData();
   }, [navigate]);
 
