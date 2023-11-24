@@ -81,7 +81,8 @@ export default function DisplayStudentDetails(props){
     return(
         <>
 
-        <div className="flex flex-col items-center  py-8 lg:w-80 w-80 bg-white border  rounded-xl">
+        <div className="flex flex-col items-center  py-8 lg:w-72 w-64 bg-white border  rounded-xl">
+
 
 
             <div className="w-36 h-36  overflow-hidden rounded-full border-red-700 border-4">
