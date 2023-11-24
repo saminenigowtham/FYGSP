@@ -148,7 +148,7 @@ export default function DisplayStudentDetails(props){
           <div className="flex justify-around">
           <button 
           onClick={sendComment}
-          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm"
           >Send</button>
 
           <button 
@@ -157,7 +157,7 @@ export default function DisplayStudentDetails(props){
             setisSending(false);
             setComment("")
           }}
-          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm"
           >Cancel</button>
           </div>
           </div>
