@@ -159,7 +159,7 @@ export default function SelectGuide() {
 
       <input
         type="text"
-        placeholder="Search guide..."
+        placeholder="Search mentor..."
         className="border-2 border-solid border-black rounded-lg px-2 h-12 my-4 mr-10 lg:w-fit md:w-fit w-40"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
