@@ -125,7 +125,7 @@ export default function DisplayStudentDetails(props){
         <button 
 
 
-        className={`bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg ${isSending ? 'cursor-none':'cursor-pointer'} `}
+        className={`bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm ${isSending ? 'cursor-none':'cursor-pointer'} `}
         onClick={()=>{
           setOpenCommentBox(true);
         }}
