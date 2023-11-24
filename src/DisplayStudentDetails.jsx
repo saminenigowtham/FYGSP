@@ -84,7 +84,7 @@ export default function DisplayStudentDetails(props){
         <div className="flex flex-col items-center  p-8 lg:w-96 w-80 bg-white border  rounded-xl">
 
 
-            <div className="w-44 h-44  overflow-hidden rounded-full border-red-700 border-4">
+            <div className="w-36 h-36  overflow-hidden rounded-full border-red-700 border-4">
                          <img 
                         // src={props.img}
                         src={getDirectLinkFromShareableLink(props.img)}
