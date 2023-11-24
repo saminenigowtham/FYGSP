@@ -32,7 +32,7 @@ export default function StaffLogin(){
         console.warn("Im clicked");
         setIsLoading(true);
         
-        const response = await axios.post(serverPath1+"/login/"+formData['email'], formData)
+        const response = await axios.post(serverPath1+"/stafflogin/"+formData['email'], formData)
         console.warn(response.data);
         if(response.data.message=="Invalid Credentials" || response.data.message=="Account not found!")
         {
