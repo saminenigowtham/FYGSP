@@ -190,7 +190,7 @@ export default function StaffDashboard()
         <button 
 
 
-        className={`bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg ${isSending ? 'cursor-none':'cursor-pointer'} `}
+        className={`bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm ${isSending ? 'cursor-none':'cursor-pointer'} `}
         onClick={()=>{
           setOpenCommentBox(true);
         }}
@@ -212,7 +212,7 @@ export default function StaffDashboard()
           <div className="flex justify-around">
           <button 
           onClick={sendComment}
-          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm"
           >Send</button>
 
           <button 
@@ -221,7 +221,7 @@ export default function StaffDashboard()
             setisSending(false);
             setComment("")
           }}
-          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-lg"
+          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm"
           >Cancel</button>
           </div>
           </div>
@@ -243,7 +243,7 @@ export default function StaffDashboard()
 
                     
                     <button
-                    className="bg-red-900 text-white px-6 py-2 rounded-md my-2 text-lg"
+                    className="bg-red-900 text-white px-6 py-2 rounded-md my-2 text-sm"
                      onClick={()=>{
                         localStorage.removeItem("GuideMailId")
                         navigate("/")
