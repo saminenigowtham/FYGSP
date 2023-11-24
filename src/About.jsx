@@ -30,7 +30,7 @@ export default function About(){
         
         <p className="font-semibold text-lg">This website is designed to help first-year students choose a mentor who will support them throughout the academic year. Here's a step-by-step guide:</p>
 
-        <ol className=" pt-2 text-lg pl-4 list-decimal">
+        <ol className=" pt-2 text-sm pl-4 list-decimal">
             <li>Select a faculty member as your mentor. Each mentor has 20 vacancies available.</li>
             <li>After selecting your mentor, provide the following information:</li>
             <ul className="pt-2 pl-8 list-disc">
