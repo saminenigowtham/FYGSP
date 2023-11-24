@@ -37,7 +37,7 @@ const Footer = () => {
       </div>
       <hr className="mx-20" />
       <div className="container mx-auto py-2 px-8 text-center text-sm">
-        &copy; {new Date().getFullYear()} Sathyabama University. All rights reserved.
+        &copy; {new Date().getFullYear()} School of Computing. All rights reserved.
       </div>
     </footer>
   );
