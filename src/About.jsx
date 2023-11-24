@@ -45,6 +45,8 @@ export default function About(){
             <li>No duplicates are allowed, so ensure the information is unique.</li>
             <li>Upload a passport-size photo, which must be less than 100KB in size.</li>
             <li>After entering the details, submit your information.</li>
+            <li>Your login credentials will be sent to the provided mail.</li>
+
         </ol>
 
         <p className="flex pt-4 justify-center">That's all for the student registration process!</p>
