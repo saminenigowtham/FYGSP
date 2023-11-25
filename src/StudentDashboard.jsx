@@ -163,7 +163,7 @@ export default function StudentDashboard()
                         className="" />}
                     </div>
 
-                    <div className="pt-2 font-bold text-xl">
+                    <div className="pt-2 font-bold max-w-fit text-xl">
                         <p>{StudentData.name}</p>
                     </div>
 
