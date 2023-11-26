@@ -588,7 +588,7 @@ export default function SingleRegisterForm() {
 
 
 
-        <div className="custom-file-upload lg:pl-12 py-4">
+        <div className="custom-file-upload flex justify-center lg:block lg:pl-12 py-4">
         
             {!selectedImage && <div>
               <label for="photo-upload" class="custom-button">
