@@ -119,10 +119,39 @@ export default function StudentDashboard()
 
 
         <>
-        {/* {true && <LoadingScreen />} */}
+        {isLoading ? (
+            <>
+            <LoadingScreen />
+            <nav className="flex items-center justify-between bg-[#9e1c3f] p-10 py-5">
+                    <div className="flex items-center">
+                    <a href="/">
+                        <img
+                        src={sistlogologin}
+                        alt="Logo"
+                        className="object-scale-down h-35 w-80 px-3 pt-3"
+                        />
+                    </a>
+                    </div>
+                    <div className={`lg:flex items-center space-x-10 text-white `}>
+                    
+                    </div>
+                    <div className="flex items-center">
+                    <button
+                        onClick={handleMenuClick}
+                        className="text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#9e1c3f] focus:ring-white"
+                    >
+                        <FiMenu size={36} />
+                    </button>
+                    </div>
+            </nav>
+
+            </>
+            ) :
+            
 
         
-        <div className='flex flex-col min-h-screen'>
+        (
+            <div className='flex flex-col min-h-screen'>
         
         {/* <div className=""> */}
 
@@ -258,6 +287,7 @@ export default function StudentDashboard()
         </div>
         {/* <Footer /> */}
         </div>
+        )}
         </>
     )
     // }

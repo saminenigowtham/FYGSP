@@ -128,12 +128,39 @@ export default function StaffDashboard()
 
 
         <>
-        {/* {true && <LoadingScreen />} */}
+        {isLoading ? (
+            <>
+            <LoadingScreen />
+        <nav className="flex items-center justify-between bg-[#9e1c3f] p-10 py-5">
+                    <div className="flex items-center">
+                    <a href="/">
+                        <img
+                        src={sistlogologin}
+                        alt="Logo"
+                        className="object-scale-down h-35 w-80 px-3 pt-3"
+                        />
+                    </a>
+                    </div>
+                    <div className={`lg:flex items-center space-x-10 text-white `}>
+                    
+                    </div>
+                    <div className="flex items-center">
+                    <button
+                        onClick={handleMenuClick}
+                        className="text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#9e1c3f] focus:ring-white"
+                    >
+                        <FiMenu size={36} />
+                    </button>
+                    </div>
+            </nav>
+            </>
+            ) : 
 
         
-        <div className='flex flex-col min-h-screen'>
+        (<div className='flex flex-col min-h-screen'>
         
         {/* <div className=""> */}
+        
 
 
             <nav className="flex items-center justify-between bg-[#9e1c3f] p-10 py-5">
@@ -255,7 +282,6 @@ export default function StaffDashboard()
 
 
 
-        
 
         <div className={`flex-grow  pt-24 pb-10 px-10  bg-red-50 md:blur-0 ${isSidebarOpen ? "blur-sm":""}`}>
 
@@ -265,7 +291,9 @@ export default function StaffDashboard()
                 
                 AllStudents.map((item)=>{
                     return(
+                        <>
                     <DisplayStudentDetails key={item.mailId} img={item.image} name={item.name} regNo={item.regNo} mailId={item.mailId} phoneNo={item.phoneNo} address={item.address} section={item.section} />
+                    </>
                 )})
                 
 
@@ -278,6 +306,7 @@ export default function StaffDashboard()
         </div>
         {/* <Footer /> */}
         </div>
+        )}
         </>
     )
     // }
