@@ -67,6 +67,7 @@ export default function StudentDashboard()
     //   e.preventDefault();
 
      console.warn(StudentMailId)
+     setIsLoading(true);
 
 
       try{
@@ -77,7 +78,8 @@ export default function StudentDashboard()
 
 
       const response = await axios.post(serverPath1+"/getStudentData", data)
-      console.warn(response.data);
+    //   console.warn(response.data);
+      setIsLoading(false);
       if(response.data.message == "SUCCESS")
       {
         setStudentData(response.data.StudentData);
