@@ -57,6 +57,8 @@ export default function SingleRegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [Error1, setError1] = useState('');
+  const [Error2, setError2] = useState('');
+
 
 
   const [isMailVerified, setisMailVerified] = useState(false);
@@ -108,6 +110,10 @@ export default function SingleRegisterForm() {
           setError1("Something went wrong! Try again.");
           setVerificationInitiated(false);
           setIsVerifying(false);
+
+          setTimeout(() => {
+            setError1("")
+          }, 2000);
         }
     }catch(err){
         setIsLoading(false)
@@ -124,7 +130,11 @@ export default function SingleRegisterForm() {
 
   }else{
     // alert("No duplicate entries allowed!")
-    setError1("Enter mail ID first.")
+    setError2("Enter mail ID first.")
+
+    setTimeout(() => {
+      setError2("")
+    }, 2000);
     setIsLoading(false)
 
   }
@@ -210,6 +220,9 @@ export default function SingleRegisterForm() {
           setSelectedImage(null);
           setError('Image size must be less than 100KB.');
         }
+        setTimeout(() => {
+          setError("")
+        }, 2000);
       }
     };
 
@@ -230,16 +243,25 @@ export default function SingleRegisterForm() {
     if ( userPhone.length!=10)
     {
         setError1("Phone number must have 10 digits.")
+        setTimeout(() => {
+          setError1("")
+        }, 2000);
         return
     }
     if (userRegNo.length!=8)
     {
         setError1("Register number must have 8 digits.")
+        setTimeout(() => {
+          setError1("")
+        }, 2000);
         return
     }
 
     if(!isMailVerified){
       setError1("Please verify the mail id!");
+      setTimeout(() => {
+        setError1("")
+      }, 2000);
       return
     }
 
@@ -250,6 +272,9 @@ export default function SingleRegisterForm() {
        userSection!="E1" || userSection!="E2" || userSection!="E3" || userSection!="E4" || userSection!="E5"  )
        {
           setError1("Enter valid section name!")
+          setTimeout(() => {
+            setError1("")
+          }, 2000);
        }
 
     setIsLoading(true);
@@ -357,6 +382,9 @@ export default function SingleRegisterForm() {
             setError1("No Vacancy! Select Another Staff.");
 
           }
+          setTimeout(() => {
+            setError1("")
+          }, 2000);
         
           setIsLoading(false);
         };
@@ -666,6 +694,10 @@ export default function SingleRegisterForm() {
               : 'Resend'
             : 'Verify Your Mail'}
         </button>
+        <div className="flex justify-around pb-2">
+    {Error2 && <p style={{ color: 'red' }} className="">{Error2}</p>}
+
+    </div>
         </div>
         </div>
 
