@@ -418,7 +418,7 @@ export default function SingleRegisterForm() {
 
 
       <div className="m-4 border-solid border-2 rounded-lg">
-        <div className="bg-[#330716] m-4 rounded-lg  flex justify-center items-center font-bold text-white lg:text-4xl text-lg lg:py-32 py-20">
+        <div className="bg-[#330716] m-4 rounded-lg  flex justify-center items-center font-bold text-white lg:text-4xl text-lg lg:py-16 py-20">
           <p>Confirmation Details</p>
         </div>
 
