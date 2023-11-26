@@ -31,3 +31,39 @@
     }
   }
   
+
+
+  .custom-file-upload {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #7A9D54;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .custom-button:hover {
+    background-color: #7A9D54;
+  }
+  
+  #photo-upload {
+    display: none;
+  }
+  
+  /* Optional: Style the selected file name if needed */
+  .custom-file-upload input[type="file"]:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  
+  .custom-file-upload input[type="file"]:valid + label {
+    background-color: #45a049;
+  }
+  

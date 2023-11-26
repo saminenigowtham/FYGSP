@@ -8,6 +8,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Loginnavbar from "./shared/Loginnavbar";
 import Footer from "./shared/Footer";
+import { BiImageAdd } from "react-icons/bi";
 
 import LoadingScreen from "./shared/Loader";
 
@@ -559,27 +560,53 @@ export default function SingleRegisterForm() {
 
 
 
-        <div className="lg:pl-8 py-4">
-            {!selectedImage && <input
+        <div className="custom-file-upload lg:pl-12 py-4">
+        
+            {!selectedImage && <div>
+              <label for="photo-upload" class="custom-button">
+              <div className="flex space-x-1"><span>Upload Your Photo</span><BiImageAdd  className="text-2xl flex justify-center items-center"/></div>
+            </label>
+            <input
+            id="photo-upload"
             required
             className="border-0 h-12  px-4 w-fit max-w-min"
             type="file" 
             onChange={handleImageChange} 
-            accept="image/*" />}
+            accept="image/*" />
+            </div>}
             {error && <p style={{ color: 'red' }} className="lg:pl-4">{error}</p>}
             {selectedImage && (
                 <div
-                className="px-4">
+                className="">
                 <p>{selectedImage.name}</p>
-                <p className="text-green-500">Image Uploaded Successfully</p>
+                <p className="text-green-500 pb-2">Image Uploaded Successfully</p>
                 {/* <p>Selected Image:</p>
                 <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
                 <button  disabled={uploading}>
                     {uploading ? 'Uploading...' : 'Upload Image'}
                 </button> */}
+
+
+
+                <label for="photo-upload" class="custom-button">
+              <div className="flex space-x-1"><span>Change Photo</span><BiImageAdd  className="text-2xl flex justify-center items-center"/></div>
+            </label>
+            <input
+            id="photo-upload"
+            required
+            className="border-0 h-12  px-4 w-fit max-w-min"
+            type="file" 
+            onChange={handleImageChange} 
+            accept="image/*" />
+
+
+
+
                 </div>
             )}
             </div>
+
+          
 
 
 
