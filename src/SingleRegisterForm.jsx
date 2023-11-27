@@ -11,6 +11,7 @@ import Footer from "./shared/Footer";
 import { BiImageAdd } from "react-icons/bi";
 
 import LoadingScreen from "./shared/Loader";
+import { useSyncExternalStore } from "react";
 
 
 
@@ -257,6 +258,14 @@ export default function SingleRegisterForm() {
         return
     }
 
+    if(!selectedImage){
+      setError1("Please upload your photo!");
+      setTimeout(() => {
+        setError1("")
+      }, 2000);
+      return
+    }
+
     if(!isMailVerified){
       setError1("Please verify the mail id!");
       setTimeout(() => {
@@ -264,17 +273,19 @@ export default function SingleRegisterForm() {
       }, 2000);
       return
     }
+    console.error(userSection);
 
-    if(userSection!="A1" || userSection!="A2" || userSection!="A3" || userSection!="A4" || userSection!="A5" || 
-       userSection!="B1" || userSection!="B2" || userSection!="B3" || userSection!="B4" || userSection!="B5" || 
-       userSection!="C1" || userSection!="C2" || userSection!="C3" || userSection!="C4" || userSection!="C5" || 
-       userSection!="D1" || userSection!="D2" || userSection!="D3" || userSection!="D4" || userSection!="D5" || 
-       userSection!="E1" || userSection!="E2" || userSection!="E3" || userSection!="E4" || userSection!="E5"  )
+    if(userSection=="A1" && userSection=="A2" && userSection=="A3" && userSection=="A4" && userSection=="A5" && 
+       userSection=="B1" && userSection=="B2" && userSection=="B3" && userSection=="B4" && userSection=="B5" && 
+       userSection=="C1" && userSection=="C2" && userSection=="C3" && userSection=="C4" && userSection=="C5" && 
+       userSection=="D1" && userSection=="D2" && userSection=="D3" && userSection=="D4" && userSection=="D5" && 
+       userSection=="E1" && userSection=="E2" && userSection=="E3" && userSection=="E4" && userSection=="E5" )
        {
           setError1("Enter valid section name!")
           setTimeout(() => {
             setError1("")
           }, 2000);
+          return
        }
 
     setIsLoading(true);
@@ -591,12 +602,13 @@ export default function SingleRegisterForm() {
         <div className="custom-file-upload flex justify-center lg:block lg:pl-12 py-4">
         
             {!selectedImage && <div>
-              <label for="photo-upload" class="custom-button">
+              <label htmlFor="photo-upload" className="custom-button">
               <div className="flex space-x-1"><span>Upload Your Photo</span><BiImageAdd  className="text-2xl flex justify-center items-center"/></div>
             </label>
             <input
+            name="photoUpload"
             id="photo-upload"
-            required
+          
             className="border-0 h-12  px-4 w-fit max-w-min"
             type="file" 
             onChange={handleImageChange} 
@@ -616,12 +628,12 @@ export default function SingleRegisterForm() {
 
 
 
-                <label for="photo-upload" class="custom-button">
+                <label htmlFor="photo-upload" className="custom-button">
               <div className="flex space-x-1"><span>Change Photo</span><BiImageAdd  className="text-2xl flex justify-center items-center"/></div>
             </label>
             <input
+            
             id="photo-upload"
-            required
             className="border-0 h-12  px-4 w-fit max-w-min"
             type="file" 
             onChange={handleImageChange} 
@@ -656,7 +668,7 @@ export default function SingleRegisterForm() {
           type="number"
           placeholder="Enter OTP"
           value={userotp}
-          required
+        
           onChange={(e) => {
             setuserotp(e.target.value);
             if (recievedOTP == e.target.value)
