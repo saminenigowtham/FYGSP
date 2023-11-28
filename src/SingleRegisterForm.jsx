@@ -401,6 +401,7 @@ export default function SingleRegisterForm() {
         };
 
 
+        const element= document.getElementsByClassName("custom-file-upload")[0];
 
 
 
@@ -416,7 +417,12 @@ export default function SingleRegisterForm() {
     <Loginnavbar />
 
 
-      {isLoading &&  <LoadingScreen />}
+      {isLoading &&  (
+        <>
+        <LoadingScreen />
+      
+        </>
+      )}
 
       
 

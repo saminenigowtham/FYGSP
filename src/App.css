@@ -35,8 +35,8 @@
 
   .custom-file-upload {
     display: inline-block;
-    position: relative;
-    z-index: -1;
+    /* position: relative; */
+    /* z-index: -1; */
 
   }
   
