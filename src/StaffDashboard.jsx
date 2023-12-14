@@ -292,7 +292,17 @@ export default function StaffDashboard()
                 AllStudents.map((item)=>{
                     return(
                         <>
-                    <DisplayStudentDetails key={item.mailId} img={item.image} name={item.name} regNo={item.regNo} mailId={item.mailId} phoneNo={item.phoneNo} address={item.address} section={item.section} />
+                    <DisplayStudentDetails 
+                    key={item.mailId} 
+                    img={item.image} 
+                    name={item.name} 
+                    regNo={item.regNo} 
+                    mailId={item.mailId} 
+                    phoneNo={item.phoneNo} 
+                    // address={item.address} 
+                    // section={item.section}
+                     />
+
                     </>
                 )})
                 
