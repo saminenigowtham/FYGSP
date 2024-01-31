@@ -120,6 +120,22 @@ export default function StaffDashboard()
 
 
 
+    function getDirectLinkFromShareableLink(shareableLink) {
+      try {
+        const fileIdMatch = shareableLink.match(/\/uc\?id=(.*?)(&|$)/);
+        if (fileIdMatch && fileIdMatch[1]) {
+          const fileId = fileIdMatch[1];
+          return `https://drive.google.com/thumbnail?id=${fileId}`;
+        } else {
+          throw new Error("Invalid shareable link format");
+        }
+      } catch (error) {
+        console.error("Error processing shareable link:", error.message);
+        return null;
+      }
+    }
+  
+
 
 
     // if(GuideMailId){
@@ -194,7 +210,7 @@ export default function StaffDashboard()
 
                     <div className="w-40 h-40  overflow-hidden rounded-full">
                         {GuideDetails.IMAGE && <img 
-                        src={GuideDetails.IMAGE} 
+                        src={getDirectLinkFromShareableLink(GuideDetails.IMAGE)} 
                         alt=""
                         className="" />}
                     </div>
