@@ -21,8 +21,12 @@ function App() {
           <Route path="/" element={<About />} ></Route>
           <Route path="/selectguide" element={<SelectGuide />} ></Route>
           <Route path="/stafflogin" element={<StaffLogin />} ></Route>
+
+
           <Route path='/selectguide/:id' element={<SingleRegisterForm />}></Route>
           <Route path='/selectguide/:id/success' element={<Success />}></Route>
+
+          
           <Route path="/staffdashboard" element={<StaffDashboard />} ></Route>
 
           <Route path="/studentlogin" element={<StudentLogin />} ></Route>

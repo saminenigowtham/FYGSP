@@ -12,7 +12,7 @@ export default function DisplayStudentDetails(props){
           const fileIdMatch = shareableLink.match(/\/file\/d\/(.*?)\//);
           if (fileIdMatch && fileIdMatch[1]) {
             const fileId = fileIdMatch[1];
-            return `https://drive.google.com/uc?id=${fileId}`;
+            return `https://drive.google.com/thumbnail?id=${fileId}`;
           } else {
             throw new Error("Invalid shareable link format");
           }

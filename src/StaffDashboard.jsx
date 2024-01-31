@@ -222,7 +222,7 @@ export default function StaffDashboard()
           setOpenCommentBox(true);
         }}
         >
-        { isSending ? "Sending..." : "Circulate A Message"}
+        Circulate A Message
         </button>}
 
         {OpenCommentBox && 
@@ -239,8 +239,8 @@ export default function StaffDashboard()
           <div className="flex justify-around">
           <button 
           onClick={sendComment}
-          className="bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm"
-          >Send</button>
+          className={`bg-red-900 flex justify-around text-white px-6 py-2 rounded-md my-2 text-sm ${isSending?"cursor-not-allowed":""}`}
+          >{isSending ? "Sending...":"send"}</button>
 
           <button 
           onClick={()=>{
