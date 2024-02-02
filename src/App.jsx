@@ -9,6 +9,8 @@ import Success from './Success';
 import StaffDashboard from './StaffDashboard';
 import StudentLogin from './StudentLogin';
 import StudentDashboard from './StudentDashboard';
+import StudentInfoBar from './components/studentInfoBar';
+import EventsItems from './components/EventsItems';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,7 +34,9 @@ function App() {
           <Route path="/studentlogin" element={<StudentLogin />} ></Route>
           <Route path="/studentdashboard" element={<StudentDashboard />} ></Route>
 
-
+          {/* creating student INfo Common bar */}
+          <Route path="/studentInfoBar" element={<StudentInfoBar/>}></Route>
+          <Route path='/eventsInfo' element={<EventsItems/>}></Route>
         </Routes>
       </Router> 
     </>
