@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 const StudentInfoBar = () => {
     const data = [
         { label: 'Name', value: 'John Doe' },
@@ -8,22 +8,7 @@ const StudentInfoBar = () => {
     ];
     // const eventNames = ["Events Conducted", "Events Attended"];
     // const semister = ["semister 1", "semister 2", "semister 3", "semister 4", "semister 5", "semister 6", "semister 7", "semister 8"]
-    // State to track selected semester
-    const [selectedSemester, setSelectedSemester] = useState(null);
 
-    // State for event details in the form
-    const [eventDetails, setEventDetails] = useState({
-        eventName: "",
-        eventDate: "",
-        // Add more event details as needed
-    });
-
-    // Function to handle form submission
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        // Process the form data as needed
-        console.log("Event Details:", eventDetails);
-    };
     return (
 
         <div className='sm:flex '>
@@ -94,7 +79,7 @@ const StudentInfoBar = () => {
 
                                     <div className="w-full  mb-4">
                                         <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Events Attented</label>
-                                        <select className="w-full border rounded-md sm:w-1/2 px-3 py-2 mt-4" onChange={(e) => setSelectedSemester(e.target.value)} >
+                                        <select className="w-full border rounded-md sm:w-1/2 px-3 py-2 mt-4">
                                             <option value="option1">Semester 1</option>
                                             <option value="option2">Semester 2</option>
                                             <option value="option1">Semester 3</option>
@@ -105,29 +90,6 @@ const StudentInfoBar = () => {
                                             <option value="option2">Semester 8</option>
                                             {/* Add options for Semesters 3-8 */}
                                         </select>
-                                        {selectedSemester && (
-                                            <form onSubmit={handleFormSubmit}>
-                                                {/* Your form fields for event details */}
-                                                <input
-                                                    type="text"
-                                                    placeholder="Event Name"
-                                                    value={eventDetails.eventName}
-                                                    onChange={(e) => setEventDetails({ ...eventDetails, eventName: e.target.value })}
-                                                    className="w-full border rounded-md px-3 py-2 mb-2"
-                                                />
-                                                <input
-                                                    type="text"
-                                                    placeholder="Event Date"
-                                                    value={eventDetails.eventDate}
-                                                    onChange={(e) => setEventDetails({ ...eventDetails, eventDate: e.target.value })}
-                                                    className="w-full border rounded-md px-3 py-2 mb-2"
-                                                />
-                                                {/* Add more form fields as needed */}
-                                                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                                                    Submit
-                                                </button>
-                                            </form>
-                                        )}
                                     </div>
                                 </div>
                                 {/* Second row */}

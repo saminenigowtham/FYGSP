@@ -11,6 +11,8 @@ import StudentLogin from './StudentLogin';
 import StudentDashboard from './StudentDashboard';
 import StudentInfoBar from './components/studentInfoBar';
 import EventsItems from './components/EventsItems';
+import EventCardList from './components/EventCardList';
+import Remarks from './components/Remarks';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,17 +30,20 @@ function App() {
           <Route path='/selectguide/:id' element={<SingleRegisterForm />}></Route>
           <Route path='/selectguide/:id/success' element={<Success />}></Route>
 
-          
+
           <Route path="/staffdashboard" element={<StaffDashboard />} ></Route>
 
           <Route path="/studentlogin" element={<StudentLogin />} ></Route>
           <Route path="/studentdashboard" element={<StudentDashboard />} ></Route>
 
           {/* creating student INfo Common bar */}
-          <Route path="/studentInfoBar" element={<StudentInfoBar/>}></Route>
-          <Route path='/eventsInfo' element={<EventsItems/>}></Route>
+          <Route path="/studentInfoBar" element={<StudentInfoBar />}></Route>
+          <Route path='/eventsInfo' element={<EventsItems />}></Route>
+          <Route path='/eventCardList' element={<EventCardList />}></Route>
+          <Route path='/remarks' element={<Remarks />}></Route>
+
         </Routes>
-      </Router> 
+      </Router>
     </>
   )
 }
