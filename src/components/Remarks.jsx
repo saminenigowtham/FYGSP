@@ -104,34 +104,35 @@ const Remarks = () => {
 
                     <div className='flex bg-[#edeef2]  justify-center items-center'>
 
-                        <div>
+                        <div className='sm:max-h-full overflow-auto max-h-[calc(100vh-8rem)]'>
 
                             <div className=" p-4 rounded-md w-full">
                                 {/* Buttons arranged in 4 rows and 2 columns */}
                                 <div className="flex-col space-y-8">
                                     {/* add the code here  */}
                                     <div className="p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden ">
-                                        <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
-                                            <thead>
-                                                <tr className='bg-[#811338]'>
-                                                    <th className="border border-gray-400 p-0">S.no</th>
-                                                    <th className="border border-gray-400 p-2">Semester</th>
-                                                    <th className="border border-gray-400 p-2">Remarks</th>
-                                                    <th className="border border-gray-400 p-2">Mentor Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {data.map((item, index) => (
-                                                    <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                        <td className="border border-gray-400 p-2">{index + 1}</td>
-                                                        <td className="border border-gray-400 p-2">{item.semester}</td>
-                                                        <td className="border border-gray-400 p-2 text-left">{item.remarks}</td>
-                                                        <td className="border border-gray-400 p-2">{item.mentorName}</td>
+                                        <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
+                                            <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
+                                                <thead>
+                                                    <tr className='bg-[#811338]'>
+                                                        <th className="p-0 rounded-tl-2xl">S.no</th>
+                                                        <th className="p-2">Semester</th>
+                                                        <th className="p-2">Remarks</th>
+                                                        <th className="p-2 rounded-tr-xl">Mentor Name</th>
                                                     </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-
+                                                </thead>
+                                                <tbody>
+                                                    {data.map((item, index) => (
+                                                        <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
+                                                            <td className="p-2">{index + 1}</td>
+                                                            <td className="p-2">{item.semester}</td>
+                                                            <td className="p-2 text-left">{item.remarks}</td>
+                                                            <td className="p-2">{item.mentorName}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         <div className="mt-4">
                                             {/* <h2 className="text-lg font-bold mb-2">add the date </h2> */}
                                             <form className="flex flex-wrap m-8">
