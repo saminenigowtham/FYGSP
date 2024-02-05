@@ -46,6 +46,7 @@ export default function StaffLogin() {
         // setIsLoading(false);
         // navigate("/remarks")
         navigate("/mentorMeetings")
+        // navigate('/extraCredits')
     }
 
     useEffect(() => {

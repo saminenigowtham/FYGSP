@@ -17,15 +17,15 @@ const MentorMeetings = () => {
 
     const [formData, setFormData] = useState({
         serialNumber: '',
-        semester: 'hbvasbvlsfv',
-        remarks: 'bhdf lf vhzsfvsdc',
-        mentorName: 'shdbvlsf sjdnc',
-        date: 'fsvshvbjldlc',
-        venue: 'dcsdcsds',
-        natureOfCon: 'sdvsfvdsfvcsfvdsfvdsfvdsfv',
-        issues: 'dfvdbhbgjhffmjmfghbkhvldfjnohbvifjbhovfkj',
-        pointsDiss: 'bhnjivfbijpenfbivefkvbpinf',
-        remarkOnMentee: 'bvhfnjvhbfjncvbohfjlkbhfjcd',
+        semester: '',
+        remarks: '',
+        mentorName: '',
+        date: '',
+        venue: '',
+        natureOfCon: '',
+        issues: '',
+        pointsDiss: '',
+        remarkOnMentee: '',
     });
 
     const handleInputChange = (e) => {
@@ -143,16 +143,17 @@ const MentorMeetings = () => {
                                                 <tbody >
                                                     {data.map((item, index) => (
                                                         <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                            <td className="p-2">{index + 1}</td>
-                                                            <td className="p-2">{item.mentorName}</td>
-                                                            <td className="p-2 ">{item.semester}</td>
-                                                            <td className="p-2">{item.date}</td>
-                                                            <td className="p-2">{item.venue}</td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{index + 1}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.mentorName}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.semester}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.date}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.venue}</p></td>
                                                         </tr>
                                                     ))}
                                                 </tbody>
-
                                             </table>
+                                        </div>
+                                        <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
                                             <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none mt-8">
                                                 <thead>
                                                     <tr className='bg-[#811338]'>
@@ -165,18 +166,18 @@ const MentorMeetings = () => {
                                                 <tbody>
                                                     {data.map((item, index) => (
                                                         <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                            <td className="p-2">{item.natureOfCon}</td>
-                                                            <td className="p-2">{item.issues}</td>
-                                                            <td className="px-0">{item.pointsDiss}</td>
-                                                            <td className="p-2">{item.remarkOnMentee}</td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.natureOfCon}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.issues}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.pointsDiss}</p></td>
+                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.remarkOnMentee}</p></td>
                                                         </tr>
                                                     ))}
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div className="mt-4">
-                                            {/* <h2 className="text-lg font-bold mb-2">add the date </h2> */}
-                                            <form className="flex flex-wrap m-8 ">
+                                            <h2 className="text-xl font-bold mb-2">Add Date </h2>
+                                            <form className="flex flex-wrap m-6 ">
                                                 <div className="w-full sm:w-1/3 mb-2 sm:mb-0">
                                                     {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Semester</label> */}
                                                     <input
@@ -217,7 +218,7 @@ const MentorMeetings = () => {
                                                     <input
                                                         type="Address"
                                                         name="venue"
-                                                        placeholder='venue'
+                                                        placeholder='Venue'
                                                         value={formData.venue}
                                                         onChange={handleInputChange}
                                                         className="w-full border rounded-md px-3 py-2"
@@ -240,7 +241,7 @@ const MentorMeetings = () => {
                                                     <input
                                                         type="text"
                                                         name="issues"
-                                                        placeholder='issues'
+                                                        placeholder='Issues'
                                                         value={formData.issues}
                                                         onChange={handleInputChange}
                                                         className="w-full border rounded-md px-3 py-2"
@@ -251,7 +252,7 @@ const MentorMeetings = () => {
                                                     <input
                                                         type="text"
                                                         name="pointsDiss"
-                                                        placeholder='points Dissussed'
+                                                        placeholder='Points Dissussed'
                                                         value={formData.pointsDiss}
                                                         onChange={handleInputChange}
                                                         className="w-full border rounded-md px-3 py-2"
@@ -271,7 +272,7 @@ const MentorMeetings = () => {
                                                 <button
                                                     type="button"
                                                     onClick={handleAddData}
-                                                    className="bg-blue-500 text-white px-4 py-2 rounded-md ml-auto "
+                                                    className="bg-blue-500 text-white px-5 py-2 rounded-md ml-auto "
                                                 >
                                                     Add
                                                 </button>

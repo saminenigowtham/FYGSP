@@ -14,6 +14,7 @@ import EventsItems from './components/EventsItems';
 import EventCardList from './components/EventCardList';
 import Remarks from './components/Remarks';
 import MentorMeetings from './components/MentorMeetings';
+import ExtraCredits from './components/ExtraCredits';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -43,6 +44,7 @@ function App() {
           <Route path='/eventCardList' element={<EventCardList />}></Route>
           <Route path='/remarks' element={<Remarks />}></Route>
           <Route path='/mentorMeetings' element={<MentorMeetings />}></Route>
+          <Route path='/extraCredits' element={<ExtraCredits />}></Route>
         </Routes>
       </Router>
     </>
