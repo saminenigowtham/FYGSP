@@ -44,9 +44,11 @@ export default function StaffLogin() {
         //     navigate("/staffdashboard")
         // }
         // setIsLoading(false);
-        // navigate("/remarks")
-        navigate("/mentorMeetings")
-        // navigate('/extraCredits')
+        //navigate("/remarks")
+        // navigate("/mentorMeetings")
+        navigate('/extraCredits')
+        // navigate('/studentInfoBar')
+        // navigate('/eventsInfo')
     }
 
     useEffect(() => {

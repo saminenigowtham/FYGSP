@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 const Remarks = () => {
     const [data, setData] = useState([]);
+    const [dataCount, setDataCount] = useState(0);
     const [formData, setFormData] = useState({
         serialNumber: '',
         semester: '',
@@ -32,6 +33,7 @@ const Remarks = () => {
                 remarks: '',
                 mentorName: '',
             });
+            setDataCount(dataCount + 1);
         }
     };
     // const dataStudent = [
@@ -44,7 +46,7 @@ const Remarks = () => {
     return (
 
         <div className='sm:flex '>
-            <div className="p-4 sm:h-screen border-b-slate-50 shadow-md  border-2 m-2 ml-6 bg-[#e9d8de] lg:max-w-xl rounded-md shadow-md relative">
+            <div className="p-4 sm:h-screen border-b-slate-50 shadow-md  border-2 m-2 lg:ml-6 bg-[#e9d8de] lg:max-w-xl rounded-md shadow-md relative">
                 <div className='w-full rounded-t-md bg-[#811338] h-20 absolute top-0 left-0 right-0'></div>
                 {/* Large Box */}
                 <div className="flex flex-col ">
@@ -95,11 +97,11 @@ const Remarks = () => {
 
 
             {/* Largest Table */}
-            <div className='flex w-full justify-center items-center my-2 mx-0 '>
+            <div className='flex w-full justify-center h-screen overflow-y-scroll  items-center my-2 mx-0 '>
                 <div className="flex-col  bg-[#edeef2] space-y-10 border-b-slate-50 shadow-md rounded-lg border-2 m-2 ml-4 mr-4 w-full h-full ">
                     {/* First Box */}
                     <div className='w-full rounded-t-md bg-[#811338] h-20'>
-                        <div className='text-xl pt-7 px-6 font-semibold'>Rewards</div>
+                        <div className='text-xl pt-7 px-6 font-semibold'>Remarks</div>
                     </div>
 
                     <div className='flex bg-[#edeef2]  justify-center items-center'>
@@ -110,12 +112,12 @@ const Remarks = () => {
                                 {/* Buttons arranged in 4 rows and 2 columns */}
                                 <div className="flex-col space-y-8">
                                     {/* add the code here  */}
-                                    <div className="p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden ">
+                                    <div className={`p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden ${(dataCount < 1) ? 'space-y-28' : ''}`}>
                                         <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
                                             <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
                                                 <thead>
                                                     <tr className='bg-[#811338]'>
-                                                        <th className="p-0 rounded-tl-2xl">S.no</th>
+                                                        <th className="p-1 rounded-tl-2xl">S.no</th>
                                                         <th className="p-2">Semester</th>
                                                         <th className="p-2">Remarks</th>
                                                         <th className="p-2 rounded-tr-xl">Mentor Name</th>
@@ -124,17 +126,17 @@ const Remarks = () => {
                                                 <tbody>
                                                     {data.map((item, index) => (
                                                         <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                            <td className="p-2">{index + 1}</td>
-                                                            <td className="p-2">{item.semester}</td>
-                                                            <td className="p-2 text-left">{item.remarks}</td>
-                                                            <td className="p-2">{item.mentorName}</td>
+                                                            <td><p className="px-4 py-2 lg:max-w-md lg:break-all">{index + 1}</p></td>
+                                                            <td><p className="px-4 py-2 lg:max-w-md lg:break-all">{item.semester}</p></td>
+                                                            <td><p className="px-4 py-2 lg:max-w-md lg:break-all">{item.remarks}</p></td>
+                                                            <td><p className="px-4 py-2 lg:max-w-md lg:break-all">{item.mentorName}</p></td>
                                                         </tr>
                                                     ))}
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div className="mt-4">
-                                            {/* <h2 className="text-lg font-bold mb-2">add the date </h2> */}
+                                            <h2 className="text-lg font-bold mb-2">Add Data </h2>
                                             <form className="flex flex-wrap m-8">
                                                 <div className="w-full sm:w-1/3 mb-2 sm:mb-0">
                                                     {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Semester</label> */}

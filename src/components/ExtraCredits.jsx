@@ -6,206 +6,207 @@
 
 
 // small bar
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 const ExtraCredits = () => {
-    const [data, setData] = useState([]);
-    const [formData, setFormData] = useState({
-        serialNumber: '',
-        courseId: 'adxfgchjvytdr3456yfhgfdxcg',
-        courseName: 'byeaucinovbyuiancowmysbevnrcbsvencmbyosvenrbyvunseirmibvosunecvbensf',
-        yearOfStudy: '234567654323456765432345678765432',
-        grade: '3434343'
-    });
+    // const [data, setData] = useState([]);
+    // const [formData, setFormData] = useState({
+    //     serialNumber: '',
+    //     courseId: 'adxfgchjvytdr3456yfhgfdxcg',
+    //     courseName: 'byeaucinovbyuiancowmysbevnrcbsvencmbyosvenrbyvunseirmibvosunecvbensf',
+    //     yearOfStudy: '234567654323456765432345678765432',
+    //     grade: '3434343'
+    // });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-    };
+    // const handleInputChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    // };
 
-    const handleAddData = () => {
-        if (formData.courseId && formData.courseName && formData.grade) {
-            setData((prevData) => [...prevData, { ...formData }]);
-            setFormData({
-                serialNumber: '',
-                courseId: '',
-                courseName: '',
-                yearOfStudy: '',
-                grade: ''
-            });
-        }
-    };
+    // const handleAddData = () => {
+    //     if (formData.courseId && formData.courseName && formData.grade) {
+    //         setData((prevData) => [...prevData, { ...formData }]);
+    //         setFormData({
+    //             serialNumber: '',
+    //             courseId: '',
+    //             courseName: '',
+    //             yearOfStudy: '',
+    //             grade: ''
+    //         });
+    //     }
+    // };
     // const dataStudent = [
     //     { label: 'Name', value: 'John Doe' },
     //     { label: 'Age', value: 25 },
     //     { label: 'Location', value: 'City, Country' },
     //     // Add more data as needed
     // ];
+    const data = [
+        {
+            "courseId": "101",
+            "courseName": "Introduction to Computer Science",
+            "yearOfStudy": "1st",
+            "grade": "A"
+        },
+        {
+            "courseId": "202",
+            "courseName": "Data Structures and Algorithms",
+            "yearOfStudy": "2nd",
+            "grade": "B+"
+        },
+        {
+            "courseId": "303",
+            "courseName": "Database Management Systems",
+            "yearOfStudy": "3rd",
+            "grade": "A-"
+        },
+        {
+            "courseId": "404",
+            "courseName": "Software Engineering",
+            "yearOfStudy": "4th",
+            "grade": "A+"
+        }
+    ]
 
     return (
-
-        <div className='sm:flex '>
-            <div className="p-4 sm:h-screen border-b-slate-50 shadow-md  border-2 m-2 ml-6 bg-[#e9d8de] lg:max-w-xl rounded-md shadow-md relative">
-                <div className='w-full rounded-t-md bg-[#811338] h-20 absolute top-0 left-0 right-0'></div>
-                {/* Large Box */}
-                <div className="flex flex-col ">
-                    <div className="flex justify-center py-4 px-20">
-                        <div className="rounded-full overflow-hidden h-20 w-20 flex-shrink-0 mr-4">
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm3RFDZM21teuCMFYx_AROjt-AzUwDBROFww&usqp=CAU"
-                                alt="User Avatar"
-                                className="rounded-full absolute overflow-hidden h-20 w-20 flex-shrink-0 mr-4 object-cover"
-                            />
+        <>
+            <div className='sm:flex '>
+                <div className="p-4 sm:h-screen border-b-slate-50  border-2 lg:my-0 m-2 lg:ml-6 bg-[#e9d8de] lg:max-w-xl rounded-md shadow-md relative">
+                    <div className='w-full rounded-t-md bg-[#811338] h-20 absolute top-0 left-0 right-0'></div>
+                    {/* Large Box */}
+                    <div className="flex flex-col ">
+                        <div className="flex justify-center py-4 px-20">
+                            <div className="rounded-full overflow-hidden h-20 w-20 flex-shrink-0 mr-4">
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm3RFDZM21teuCMFYx_AROjt-AzUwDBROFww&usqp=CAU"
+                                    alt="User Avatar"
+                                    className="rounded-full absolute overflow-hidden h-20 w-20 flex-shrink-0 mr-4 object-cover"
+                                />
+                            </div>
                         </div>
                     </div>
+
+                    {/* Header Design */}
+                    <div className="mb-10 text-center">
+                        <h2 className="text-2xl font-bold" style={{ wordBreak: 'break-all' }}>Jeevan S</h2>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col p-0 text-left ">
+                            <p className="mb-4 text-sm font-semibold whitespace-nowrap" style={{ color: 'rgba(0,0,0)' }}>Register Number</p>
+                            <p className=" text-sm font-semibold" style={{ color: 'rgba(0,0,0)' }}>Section</p>
+                        </div>
+                        <div className="flex flex-col p-0 text-left">
+                            <p className="mb-4 text-sm text-gray-600">43110001</p>
+                            <p className="text-sm text-gray-600" >E3</p>
+                        </div>
+                        <div className="flex flex-col text-left">
+                            <p className="text-sm font-semibold" style={{ color: 'rgba(0,0,0)' }}>Email</p>
+                        </div>
+                        <div className="flex flex-col p-0 text-left">
+                            <p className=" text-sm text-gray-600" style={{ wordBreak: 'break-all' }}>jeevan@gmail.com</p>
+                        </div>
+                        <div className="flex flex-col p-0 text-left">
+                            <p className=" text-sm font-semibold" style={{ color: 'rgba(0,0,0)' }}>Phone</p>
+                        </div>
+                        <div className="flex flex-col p-0 text-left">
+                            <p className="text-sm text-gray-600">07676308768</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-center mt-4">
+                        <button className="bg-[#811338] text-white px-4 py-2 rounded-md">
+                            BACK
+                        </button>
+                    </div>
                 </div>
 
-                {/* Header Design */}
-                <div className="mb-10 text-center">
-                    <h2 className="text-2xl font-bold" style={{ wordBreak: 'break-all' }}>Jeevan S</h2>
-                </div>
+                {/* Largest Table */}
+                <div className='flex w-full justify-center h-screen overflow-y-scroll lg:my-0 items-center my-2 mx-0 '>
+                    <div className="flex-col  bg-[#edeef2] space-y-10 border-b-slate-50 shadow-md rounded-lg border-2 m-2 ml-4 mr-4 w-full h-full ">
+                        {/* First Box */}
+                        <div className='w-full rounded-t-md bg-[#811338] h-20 '>
+                            <div className='text-xl pt-7 px-6 font-semibold'>Additional Cedits</div>
+                        </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="flex flex-col p-0 text-left ">
-                        <p className="mb-4 text-sm font-semibold whitespace-nowrap" style={{ color: 'rgba(0,0,0)' }}>Register Number</p>
-                        <p className=" text-sm font-semibold" style={{ color: 'rgba(0,0,0)' }}>Section</p>
-                    </div>
-                    <div className="flex flex-col p-0 text-left">
-                        <p className="mb-4 text-sm text-gray-600">43110001</p>
-                        <p className="text-sm text-gray-600" >E3</p>
-                    </div>
-                    <div className="flex flex-col text-left">
-                        <p className="text-sm font-semibold" style={{ color: 'rgba(0,0,0)' }}>Email</p>
-                    </div>
-                    <div className="flex flex-col p-0 text-left">
-                        <p className=" text-sm text-gray-600" style={{ wordBreak: 'break-all' }}>jeevan@gmail.com</p>
-                    </div>
-                    <div className="flex flex-col p-0 text-left">
-                        <p className=" text-sm font-semibold" style={{ color: 'rgba(0,0,0)' }}>Phone</p>
-                    </div>
-                    <div className="flex flex-col p-0 text-left">
-                        <p className="text-sm text-gray-600">07676308768</p>
-                    </div>
-                </div>
-                <div className="flex justify-center mt-4">
-                    <button className="bg-[#811338] text-white px-4 py-2 rounded-md">
-                        BACK
-                    </button>
-                </div>
-            </div>
-
-
-            {/* Largest Table */}
-            <div className='flex w-full justify-center items-center my-2 mx-0 '>
-                <div className="flex-col  bg-[#edeef2] space-y-10 border-b-slate-50 shadow-md rounded-lg border-2 m-2 ml-4 mr-4 w-full h-full ">
-                    {/* First Box */}
-                    <div className='w-full rounded-t-md bg-[#811338] h-20'>
-                        <div className='text-xl pt-7 px-6 font-semibold'>Extra Credits</div>
-                    </div>
-
-                    <div className='flex bg-[#edeef2]  justify-center items-center'>
-
-                        <div className='sm:max-h-full overflow-auto max-h-[calc(100vh-8rem)]'>
-
-                            <div className=" p-4 rounded-md w-full">
-                                {/* Buttons arranged in 4 rows and 2 columns */}
+                        <div className='flex bg-[#edeef2]'>
+                            <div className="p-4 rounded-md w-full max-w-screen-lg mx-auto mt-45">
+                                {/* Buttons arranged in 2 rows and 1 column */}
                                 <div className="flex-col space-y-8">
-                                    {/* add the code here  */}
-                                    <div className="p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden ">
-                                        <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
-                                            <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
-                                                <thead>
-                                                    <tr className='bg-[#811338]'>
-                                                        <th className="p-0 rounded-tl-2xl">S.no</th>
-                                                        <th className="p-2">Course ID</th>
-                                                        <th className="p-2">Course Name</th>
-                                                        <th className="p-2">Year of Study</th>
-                                                        <th className="p-2 rounded-tr-xl">grade</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {data.map((item, index) => (
-                                                        <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                            <td className="p-2">{index + 1}</td>
-                                                            <td className="p-2">{item.courseId}</td>
-                                                            <td className="p-2">{item.courseName}</td>
-                                                            <td className="p-2">{item.yearOfStudy}</td>
-                                                            <td className="p-2">{item.grade}</td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
+                                    {/* First row */}
+                                    <div className="flex flex-wrap mb-4">
+
+                                        <div className="w-full  mb-4">
+                                            <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Curricular</label>
+                                            <select className="w-full border rounded-md sm:w-1/2 px-3 py-2 mt-4">
+                                                <option value="option1">Semester 1</option>
+                                                <option value="option2">Semester 2</option>
+                                                <option value="option1">Semester 3</option>
+                                                <option value="option2">Semester 4</option>
+                                                <option value="option1">Semester 5</option>
+                                                <option value="option2">Semester 6</option>
+                                                <option value="option1">Semester 7</option>
+                                                <option value="option2">Semester 8</option>
+                                                {/* Add options for Semesters 3-8 */}
+                                            </select>
                                         </div>
-                                        <div className="mt-4">
-                                            {/* <h2 className="text-lg font-bold mb-2">add the date </h2> */}
-                                            <form className="flex flex-wrap m-8">
-                                                <div className="w-full sm:w-1/4 mb-2 sm:mb-0">
-                                                    {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Semester</label> */}
-                                                    <input
-                                                        type="text"
-                                                        name="courseId"
-                                                        placeholder='Course ID'
-                                                        value={formData.courseId}
-                                                        onChange={handleInputChange}
-                                                        className="w-full border rounded-md px-3 py-2"
-                                                    />
+                                    </div>
+                                    {/* Second row */}
+                                    <div className="flex flex-wrap">
+                                        <div className="w-full mb-4">
+                                            <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Co-Curricular</label>
+                                            <select className="w-full border rounded-md sm:w-1/2 px-3 py-2 mt-4">
+                                                <option value="option1">Semester 1</option>
+                                                <option value="option2">Semester 2</option>
+                                                <option value="option1">Semester 3</option>
+                                                <option value="option2">Semester 4</option>
+                                                <option value="option1">Semester 5</option>
+                                                <option value="option2">Semester 6</option>
+                                                <option value="option1">Semester 7</option>
+                                                <option value="option2">Semester 8</option>
+                                                {/* Add options for Semesters 3-8 */}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {/* third row */}
+                                    <div className="flex flex-wrap">
+                                        <div className="w-full mb-4">
+                                            <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Extra Curricular</label>
+                                            <div className='p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden'>
+                                                <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
+                                                    <table className="w-full  my-4 border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
+                                                        <thead>
+                                                            <tr className='bg-[#811338]'>
+                                                                <th className="p-0 rounded-tl-2xl">S.no</th>
+                                                                {/* <th className="p-2">Course ID</th> */}
+                                                                <th className="p-2">Course Name</th>
+                                                                <th className="p-2">Year of Study</th>
+                                                                <th className="p-2 rounded-tr-xl">grade</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {data.map((item, index) => (
+                                                                <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
+                                                                    <td><p className="px-5 py-2 lg:max-w-md lg:break-all">{index + 1}</p></td>
+                                                                    {/* <td><p className="px-5 py-2 lg:max-w-md lg:break-all">{item.courseId}</p></td> */}
+                                                                    <td><p className="px-5 py-2 lg:max-w-md lg:break-all">{item.courseName}</p></td>
+                                                                    <td><p className="px-5 py-2 lg:max-w-md lg:break-all">{item.yearOfStudy}</p></td>
+                                                                    <td><p className="px-5 py-2 lg:max-w-md lg:break-all">{item.grade}</p></td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-
-                                                <div className="w-full sm:w-1/4 mb-2 sm:mb-0">
-                                                    {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Remarks</label> */}
-                                                    <input
-                                                        type="text"
-                                                        name="courseName"
-                                                        placeholder='Course Name'
-                                                        value={formData.courseName}
-                                                        onChange={handleInputChange}
-                                                        className="w-full border rounded-md px-3 py-2"
-                                                    />
-                                                </div>
-
-                                                <div className="w-full sm:w-1/4 mb-2 sm:mb-0">
-                                                    {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Mentor Name</label> */}
-                                                    <input
-                                                        type="number"
-                                                        name="yearOfStudy"
-                                                        placeholder='Year Of Study'
-                                                        value={formData.yearOfStudy}
-                                                        onChange={handleInputChange}
-                                                        className="w-full border rounded-md px-3 py-2"
-                                                    />
-                                                </div>
-
-                                                <div className="w-full sm:w-1/4 mb-2 sm:mb-0">
-                                                    {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Semester</label> */}
-                                                    <input
-                                                        type="number"
-                                                        name="grade"
-                                                        placeholder='Grade'
-                                                        value={formData.grade}
-                                                        onChange={handleInputChange}
-                                                        className="w-full border rounded-md px-3 py-2"
-                                                    />
-                                                </div>
-                                                <button
-                                                    type="button"
-                                                    onClick={handleAddData}
-                                                    className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto"
-                                                >
-                                                    Add
-                                                </button>
-                                            </form>
-
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        {/* Second Box */}
                     </div>
-                    {/* Second Box */}
                 </div>
-            </div>
-        </div>
+            </div></>
     );
 };
 

@@ -13,6 +13,9 @@ const MentorMeetings = () => {
 
 
     const [data, setData] = useState([]);
+    const [dataCount, setDataCount] = useState(0);
+    // setDataCount(data[0]["serialNumber"])
+    // console.log(dataCount);
 
 
     const [formData, setFormData] = useState({
@@ -48,6 +51,7 @@ const MentorMeetings = () => {
                 pointsDiss: '',
                 remarkOnMentee: '',
             });
+            setDataCount(dataCount + 1)
         }
 
     };
@@ -127,56 +131,58 @@ const MentorMeetings = () => {
                                 {/* Buttons arranged in 4 rows and 2 columns */}
                                 <div className="flex-col space-y-8">
                                     {/* add the code here  */}
-                                    <div className="p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden ">
-                                        <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
-                                            <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
-                                                <thead>
-                                                    <tr className='bg-[#811338]'>
-                                                        <th className="p-0 rounded-tl-2xl">S.no</th>
-                                                        <th className="p-2">Mentee Name</th>
-                                                        <th className="p-2">Semester</th>
-                                                        <th className="p-2">Date</th>
-                                                        <th className="p-2 rounded-tr-xl">Venue</th>
-                                                    </tr>
-                                                </thead>
+                                    <div className={`p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden flex-col ${dataCount <= 1 ? 'space-y-28' : ''}`}>
+                                        <div>
+                                            <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
+                                                <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
+                                                    <thead>
+                                                        <tr className='bg-[#811338]'>
+                                                            <th className="p-0 rounded-tl-2xl">S.no</th>
+                                                            <th className="p-2">Mentee Name</th>
+                                                            <th className="p-2">Semester</th>
+                                                            <th className="p-2">Date</th>
+                                                            <th className="p-2 rounded-tr-xl">Venue</th>
+                                                        </tr>
+                                                    </thead>
 
-                                                <tbody >
-                                                    {data.map((item, index) => (
-                                                        <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{index + 1}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.mentorName}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.semester}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.date}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.venue}</p></td>
+                                                    <tbody >
+                                                        {data.map((item, index) => (
+                                                            <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{index + 1}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.mentorName}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.semester}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.date}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.venue}</p></td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
+                                                <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none mt-8">
+                                                    <thead>
+                                                        <tr className='bg-[#811338]'>
+                                                            <th className='p-2 rounded-tl-xl'>Nature of Counselling given</th>
+                                                            <th className='p-2'>issues</th>
+                                                            <th className='px-0'>points Dissussed</th>
+                                                            <th className='p-2 rounded-tr-xl'>Remarks</th>
                                                         </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
-                                            <table className="w-full border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none mt-8">
-                                                <thead>
-                                                    <tr className='bg-[#811338]'>
-                                                        <th className='p-2 rounded-tl-xl'>Nature of Counselling given</th>
-                                                        <th className='p-2'>issues</th>
-                                                        <th className='px-0'>points Dissussed</th>
-                                                        <th className='p-2 rounded-tr-xl'>Remarks</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {data.map((item, index) => (
-                                                        <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.natureOfCon}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.issues}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.pointsDiss}</p></td>
-                                                            <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.remarkOnMentee}</p></td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        {data.map((item, index) => (
+                                                            <tr key={index} className={index % 2 === 0 ? 'rounded-lg' : 'bg-[#f9afb0] rounded-lg'}>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.natureOfCon}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.issues}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.pointsDiss}</p></td>
+                                                                <td className='lg:max-w-md'><p className="p-4 lg:break-all">{item.remarkOnMentee}</p></td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                         <div className="mt-4">
-                                            <h2 className="text-xl font-bold mb-2">Add Date </h2>
+                                            <h2 className="text-xl font-bold mb-2">Add Data </h2>
                                             <form className="flex flex-wrap m-6 ">
                                                 <div className="w-full sm:w-1/3 mb-2 sm:mb-0">
                                                     {/* <label className="block text-sm font-semibold text-gray-600 mb-1">Semester</label> */}
