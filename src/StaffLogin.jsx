@@ -45,8 +45,8 @@ export default function StaffLogin() {
         // }
         // setIsLoading(false);
         //navigate("/remarks")
-        // navigate("/mentorMeetings")
-        navigate('/extraCredits')
+        navigate("/mentorMeetings")
+        // navigate('/extraCredits')
         // navigate('/studentInfoBar')
         // navigate('/eventsInfo')
     }

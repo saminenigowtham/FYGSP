@@ -6,8 +6,8 @@
 
 
 // small bar
-// import { useState } from 'react';
-
+import { useState } from 'react';
+import { MdArrowDropDown } from 'react-icons/md';
 
 const ExtraCredits = () => {
     // const [data, setData] = useState([]);
@@ -42,6 +42,8 @@ const ExtraCredits = () => {
     //     { label: 'Location', value: 'City, Country' },
     //     // Add more data as needed
     // ];
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [showDropdown2, setShowDropdown2] = useState(false);
     const data = [
         {
             "courseId": "101",
@@ -68,6 +70,7 @@ const ExtraCredits = () => {
             "grade": "A+"
         }
     ]
+
 
     return (
         <>
@@ -128,52 +131,65 @@ const ExtraCredits = () => {
                         <div className='w-full rounded-t-md bg-[#811338] h-20 '>
                             <div className='text-xl pt-7 px-6 font-semibold'>Additional Cedits</div>
                         </div>
-
-                        <div className='flex bg-[#edeef2]'>
+                        <div className="flex bg-[#edeef2]">
                             <div className="p-4 rounded-md w-full max-w-screen-lg mx-auto mt-45">
                                 {/* Buttons arranged in 2 rows and 1 column */}
                                 <div className="flex-col space-y-8">
                                     {/* First row */}
                                     <div className="flex flex-wrap mb-4">
-
                                         <div className="w-full  mb-4">
-                                            <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Curricular</label>
-                                            <select className="w-full border rounded-md sm:w-1/2 px-3 py-2 mt-4">
+                                            <div className="flex-col">
+                                                <div className="flex-col justify-center ml-auto">
+                                                    <label className="block text-xl font-semibold text-gray-600 rounded-md p-2 flex space-x-5" onClick={() => setShowDropdown(!showDropdown)}>
+                                                        Curricular
+                                                        <MdArrowDropDown />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <select className={`w-full border-2 border-gray-800 rounded-md sm:w-1/2 px-3 py-2 mt-4 ${showDropdown ? '' : 'hidden'}`}>
                                                 <option value="option1">Semester 1</option>
                                                 <option value="option2">Semester 2</option>
-                                                <option value="option1">Semester 3</option>
-                                                <option value="option2">Semester 4</option>
-                                                <option value="option1">Semester 5</option>
-                                                <option value="option2">Semester 6</option>
-                                                <option value="option1">Semester 7</option>
-                                                <option value="option2">Semester 8</option>
-                                                {/* Add options for Semesters 3-8 */}
+                                                <option value="option3">Semester 3</option>
+                                                <option value="option4">Semester 4</option>
+                                                <option value="option5">Semester 5</option>
+                                                <option value="option6">Semester 6</option>
+                                                <option value="option7">Semester 7</option>
+                                                <option value="option8">Semester 8</option>
                                             </select>
                                         </div>
                                     </div>
+
                                     {/* Second row */}
-                                    <div className="flex flex-wrap">
-                                        <div className="w-full mb-4">
-                                            <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Co-Curricular</label>
-                                            <select className="w-full border rounded-md sm:w-1/2 px-3 py-2 mt-4">
+                                    <div className="flex flex-wrap mb-4">
+                                        <div className="w-full  mb-4">
+                                            <div className="flex-col">
+                                                <div className="flex-col justify-center ml-auto">
+                                                    <label className="block text-xl font-semibold text-gray-600 rounded-md p-2 flex space-x-5" onClick={() => setShowDropdown2(!showDropdown2)}>
+                                                        Co-Curricular
+                                                        <MdArrowDropDown />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <select className={`w-full border-2 border-gray-800 rounded-md sm:w-1/2 px-3 py-2 mt-4 ${showDropdown2 ? '' : 'hidden'}`}>
                                                 <option value="option1">Semester 1</option>
                                                 <option value="option2">Semester 2</option>
-                                                <option value="option1">Semester 3</option>
-                                                <option value="option2">Semester 4</option>
-                                                <option value="option1">Semester 5</option>
-                                                <option value="option2">Semester 6</option>
-                                                <option value="option1">Semester 7</option>
-                                                <option value="option2">Semester 8</option>
-                                                {/* Add options for Semesters 3-8 */}
+                                                <option value="option3">Semester 3</option>
+                                                <option value="option4">Semester 4</option>
+                                                <option value="option5">Semester 5</option>
+                                                <option value="option6">Semester 6</option>
+                                                <option value="option7">Semester 7</option>
+                                                <option value="option8">Semester 8</option>
                                             </select>
                                         </div>
                                     </div>
-                                    {/* third row */}
-                                    <div className="flex flex-wrap">
+
+                                    {/* Third row */}
+                                    <div className="flex flex-wrap mb-4">
                                         <div className="w-full mb-4">
-                                            <label className="block text-xl font-semibold text-gray-600 bg-red-200 rounded-md p-2">Extra Curricular</label>
-                                            <div className='p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden'>
-                                                <div className='overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full'>
+                                            <label className="block text-xl font-semibold text-gray-600  rounded-md p-2">Extra Curricular</label>
+                                            <div className="p-4 w-full max-w-screen-lg mx-auto rounded-md overflow-hidden">
+                                                <div className="overflow-auto max-h-[calc(100vh-8rem)] sm:max-h-full">
+                                                    {/* Your table content goes here */}
                                                     <table className="w-full  my-4 border-collapse border border-gray-400 whitespace-normal text-center border-opacity-100 border-none">
                                                         <thead>
                                                             <tr className='bg-[#811338]'>
